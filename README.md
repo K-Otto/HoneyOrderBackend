@@ -11,3 +11,5 @@ What Universal Hardware Store will do is close the gap for human error and make 
 Universal Hardware Store will be an online control system what customers who register can uses to purchase stock for there company.
 
 ## Domain Model
+
+![UML](https://github.com/Garran/UniversalHardwareStore/blob/master/UniversalHardwareStore_UML2.jpg)
