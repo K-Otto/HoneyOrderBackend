@@ -6,21 +6,14 @@
 package za.ac.cput.project.universalhardwarestore.domain;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Embeddable;
 
 /**
  *
  * @author Garran
  */
+@Embeddable
 public class Address implements Serializable{
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int addressID;
-    @Column(unique = true)
     private String addressLine1; 
     private String addressLine2;
     private String suburb; 
@@ -32,16 +25,12 @@ public class Address implements Serializable{
     }
     
     public Address(Address.Builder builder) {
-        addressID=builder.addressID;
         addressLine1=builder.addressLine1;
         addressLine2=builder.addressLine2;
         suburb=builder.suburb;
         city=builder.city;
         provence=builder.provence;
-    }
-
-    public int getAddressID() {
-        return addressID;
+        postalCode=builder.postalCode;
     }
 
     public String getAddressLine1() {
@@ -69,8 +58,6 @@ public class Address implements Serializable{
     }
     
     public static class Builder{
-
-        private int addressID;
         private String addressLine1;
         private String addressLine2;
         private String suburb;
@@ -80,11 +67,6 @@ public class Address implements Serializable{
         
         public Builder(String addressLine1) {
             this.addressLine1 = addressLine1;
-        }
-        
-        public Builder addressID(int value){
-            this.addressID=value;
-            return this;
         }
 
         public Builder addressLine2(String value){
@@ -115,34 +97,5 @@ public class Address implements Serializable{
         public Address build(){
             return new Address(this);
         }
-    }
-    
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Address)) return false;
-
-        Address address = (Address) o;
-
-        return !(addressLine1 != null ? !addressLine1.equals(address.addressLine1) : address.addressLine1 != null);
-
-    }
-    
-    @Override
-    public int hashCode() {
-        return addressLine1 != null ? addressLine1.hashCode() : 0;
-    }
-    
-    @Override
-    public String toString() {
-        return "Course{" +
-                "addressID=" + addressID +
-                ", addressLine1='" + addressLine1 + '\'' +
-                ", addressLine2='" + addressLine2 + '\'' +
-                ", suburb='" + suburb + '\'' +
-                ", city='" + city + '\'' +
-                ", provence='" + provence + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                '}';
     }
 }

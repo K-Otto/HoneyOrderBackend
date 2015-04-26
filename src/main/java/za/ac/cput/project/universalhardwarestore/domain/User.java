@@ -18,7 +18,7 @@ import javax.persistence.Id;
 public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int userID;
+    private Long id;
     @Column(unique = true)
     private String userName; 
     private String password;
@@ -28,14 +28,9 @@ public class User implements Serializable{
     }
     
     public User(Builder builder) {
-        userID=builder.userID;
         userName=builder.userName;
         password=builder.password;
         status=builder.status;
-    }
-
-    public int getUserID() {
-        return userID;
     }
 
     public String getUserName() {
@@ -51,19 +46,12 @@ public class User implements Serializable{
     }
     
     public static class Builder{
-
-        private int userID;
         private String userName;
         private String password;
         private String status;
         
         public Builder(String userName) {
             this.userName = userName;
-        }
-        
-        public Builder userID(int value){
-            this.userID=value;
-            return this;
         }
 
         public Builder password(String value){
@@ -89,19 +77,18 @@ public class User implements Serializable{
 
         User user = (User) o;
 
-        return !(userName != null ? !userName.equals(user.userName) : user.userName != null);
+        return !(id != null ? !id.equals(user.id) : user.id != null);
 
     }
-    
+
     @Override
     public int hashCode() {
-        return userName != null ? userName.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
     
     @Override
     public String toString() {
         return "Course{" +
-                "UserId=" + userID +
                 ", Username='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", Status='" + status + '\'' +

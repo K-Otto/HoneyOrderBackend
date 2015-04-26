@@ -6,10 +6,14 @@
 package za.ac.cput.project.universalhardwarestore.domain;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -19,22 +23,21 @@ public class Account implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int accountID;
+    private Long id;
     @Column(unique = true)
     private String status; 
     private double balance;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="course_id")
+    private List<Customer> customer;
     
     private Account() {
     }
     
     public Account(Account.Builder builder) {
-        accountID=builder.accountID;
         status=builder.status;
         balance=builder.balance;
-    }
-
-    public int getAccountID() {
-        return accountID;
+        customer=builder.customer;
     }
 
     public String getStatus() {
@@ -45,21 +48,19 @@ public class Account implements Serializable{
         return balance;
     }
     
+    public List<Customer> getCustomer() {
+        return customer;
+    }
+    
     public static class Builder{
-
-        private int accountID;
         private String status;
         private double balance;
+        private List<Customer> customer;
         
         public Builder(String status) {
             this.status = status;
         }
         
-        public Builder userID(int value){
-            this.accountID=value;
-            return this;
-        }
-
         public Builder password(double value){
             this.balance=value;
             return this;
@@ -77,19 +78,17 @@ public class Account implements Serializable{
 
         Account account = (Account) o;
 
-        return !(status != null ? !status.equals(account.status) : account.status != null);
-
+        return !(id != null ? !id.equals(account.id) : account.id != null);
     }
-    
+
     @Override
     public int hashCode() {
-        return status != null ? status.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
     
     @Override
     public String toString() {
         return "Course{" +
-                "AccountId=" + accountID +
                 ", Status='" + status + '\'' +
                 ", Balance='" + balance + '\'' +
                 '}';

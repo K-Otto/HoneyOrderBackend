@@ -8,6 +8,7 @@ package za.ac.cput.project.universalhardwarestore.domain;
 import java.io.Serializable;
 import java.util.function.Supplier;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,8 +21,9 @@ public class Suppliers implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int supplierID;
-    @Column(unique = true)
+    private Long id;
+    @Embedded
+    private Address address;
     private String supplierName; 
     private String supplierNumber;
     private String supplierEmail;
@@ -30,13 +32,12 @@ public class Suppliers implements Serializable{
     }
     
     public Suppliers(Suppliers.Builder builder) {
-        supplierID=builder.supplierID;
         supplierName=builder.supplierName;
         supplierEmail=builder.supplierEmail;
     }
-
-    public int getSupplierID() {
-        return supplierID;
+    
+    public Address getAddress() {
+        return address;
     }
 
     public String getSupplierName() {
@@ -53,18 +54,13 @@ public class Suppliers implements Serializable{
     
     public static class Builder{
 
-        private int supplierID;
+        private Address address;
         private String supplierName;
         private String supplierNumber;
         private String supplierEmail;
         
         public Builder(String supplierName) {
             this.supplierName = supplierName;
-        }
-        
-        public Builder supplierID(int value){
-            this.supplierID=value;
-            return this;
         }
 
         public Builder supplierNumber(String value){
@@ -101,7 +97,6 @@ public class Suppliers implements Serializable{
     @Override
     public String toString() {
         return "Course{" +
-                "supplierID=" + supplierID +
                  ", supplierName='" + supplierName + '\'' +
                 ", supplierNumber='" + supplierNumber + '\'' +
                 ", supplierEmail='" + supplierEmail + '\'' +
