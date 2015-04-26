@@ -6,11 +6,12 @@
 package za.ac.cput.project.universalhardwarestore.services.Impl;
 
 import java.util.List;
+import za.ac.cput.project.universalhardwarestore.domain.Stock;
 
 /**
  *
  * @author Garran
  */
-public interface UniversalHardwareStoreService {
-    List<UniversalHardwareStore> getCourses();
+public interface StockService {
+    List<Stock> getStock();
 }

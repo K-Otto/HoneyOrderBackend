@@ -31,9 +31,9 @@ public class Stock implements Serializable{
     private String stockDescription;
     private int quantity;
     private double price;
-    //@OneToMany(cascade = CascadeType.ALL)
-    //@JoinColumn(name="stock_id")
-    //private List<Subject> subjects;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="stock_id")
+    private List<Suppliers> suppliers;
     
     private Stock(){
         
@@ -71,6 +71,10 @@ public class Stock implements Serializable{
     public double getPrice() {
         return price;
     }
+
+    public List<Suppliers> getSuppliers() {
+        return suppliers;
+    }
     
     public static class Builder{
         private Long id;
@@ -79,6 +83,7 @@ public class Stock implements Serializable{
         private String stockDescription;
         private int quantity;
         private double price;
+        private List<Suppliers> suppliers;
         
         public Builder(String stockCode) {
             this.stockCode = stockCode;
@@ -106,6 +111,11 @@ public class Stock implements Serializable{
         
         public Builder price(double value){
             this.price=value;
+            return this;
+        }
+        
+        public Builder suppliers(List<Suppliers> value){
+            this.suppliers=value;
             return this;
         }
         
