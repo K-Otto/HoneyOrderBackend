@@ -61,8 +61,13 @@ public class Account implements Serializable{
             this.status = status;
         }
         
-        public Builder password(double value){
+        public Builder balance(double value){
             this.balance=value;
+            return this;
+        }
+        
+        public Builder customer(List<Customer> value){
+            this.customer=value;
             return this;
         }
 

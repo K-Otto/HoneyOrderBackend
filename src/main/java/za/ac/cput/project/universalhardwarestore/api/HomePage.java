@@ -8,7 +8,7 @@ package za.ac.cput.project.universalhardwarestore.api;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import za.ac.cput.project.universalhardwarestore.domain.Stock;
-import za.ac.cput.project.universalhardwarestore.services.Impl.StockService;
+import za.ac.cput.project.universalhardwarestore.services.Impl.StockServiceImpl;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/**")
 public class HomePage {
     @Autowired
-    private StockService service;
+    private StockServiceImpl service;
     @RequestMapping(value = "home",method = RequestMethod.GET)
     public String Index(){
         return "This is a Home Page";

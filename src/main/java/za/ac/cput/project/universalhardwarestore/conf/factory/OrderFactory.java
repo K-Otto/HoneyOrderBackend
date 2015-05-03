@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.cput.project.universalhardwarestore.services.Impl;
-
-import java.util.List;
-import za.ac.cput.project.universalhardwarestore.domain.Stock;
+package za.ac.cput.project.universalhardwarestore.conf.factory;
 
 /**
  *
  * @author Garran
  */
-public interface StockService {
-    List<Stock> getStock();
+public class OrderFactory {
+    
 }

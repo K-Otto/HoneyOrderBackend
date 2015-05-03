@@ -119,6 +119,16 @@ public class Stock implements Serializable{
             return this;
         }
         
+        public Builder copy(Stock value){
+            this.stockCode=value.getStockCode();
+            this.stockName=value.getStockName();
+            this.stockDescription=value.getStockDescription();
+            this.id=value.getId();
+            this.price=value.getPrice();
+            this.quantity=value.getQuantity();
+            return this;
+        }
+        
         public Stock build(){
             return new Stock(this);
         }
