@@ -5,12 +5,17 @@
  */
 package za.ac.cput.project.universalhardwarestore.repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import za.ac.cput.project.universalhardwarestore.domain.Suppliers;
 
 /**
  *
@@ -20,42 +25,39 @@ public class TestCrudSuppliers {
    private Long id;
 
     @Autowired
-    CourseRepository repository;
+    SuppliersRepository repository;
     @Test
     public void testCreate() throws Exception {
-        List<Course> courses = new ArrayList<Course>();
-        Course course = new Course.Builder("311")
+        List<Suppliers> supplierss = new ArrayList<Course>();
+        Suppliers suppliers = new Suppliers.Builder("311")
                 .name("National Diploma IT").offering(2015).build();
-        repository.save(course);
-        id=course.getId();
-        Assert.assertNotNull(course.getId());
+        repository.save(suppliers);
+        id=suppliers.getId();
+        Assert.assertNotNull(suppliers.getId());
     }
 
     @Test
     public void testRead() throws Exception {
-        Course course = repository.findOne(id);
-        Assert.assertEquals("National Diploma IT",course.getName());
+        Suppliers suppliers = repository.findOne(id);
+        Assert.assertEquals("National Diploma IT",suppliers.getName());
     }
 
     @Test
     public void testUpdate() throws Exception {
 
-        Course course = repository.findOne(id);
-        Course newcourse = new Course.Builder("12").id(course.getId())
+        Suppliers course = repository.findOne(id);
+        Suppliers newcourse = new Suppliers.Builder("12").id(suppliers.getId())
                 .name("Diploma IT").offering(2014).build();
         repository.save(newcourse);
-        Assert.assertEquals("Diploma IT", course.getName());
-        Assert.assertEquals(2014, course.getOffering());
-
+        Assert.assertEquals("Diploma IT", suppliers.getName());
+        Assert.assertEquals(2014, suppliers.getOffering());
     }
 
     @Test
     public void testDelete() throws Exception {
-        Course course = repository.findOne(id);
-        repository.delete(course);
-        Course newcourse = repository.findOne(id);
-        Assert.assertNull(newcourse);
-
-
+        Suppliers suppliers = repository.findOne(id);
+        repository.delete(suppliers);
+        Suppliers newsuppliers = repository.findOne(id);
+        Assert.assertNull(newsuppliers);
     }
 }
