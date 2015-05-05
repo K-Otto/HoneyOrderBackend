@@ -7,10 +7,12 @@ package za.ac.cput.project.universalhardwarestore.domain;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import za.ac.cput.project.universalhardwarestore.conf.factory.UserFactory;
 
 /**
  *
@@ -21,25 +23,24 @@ public class UsersTest {
     public UsersTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    @Test
+    public void testCreate() throws Exception {
+        User users = UserFactory
+                .createUser("garran","1234","active");
+        Assert.assertEquals("garran",users.getUserName());
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void testUpdate() throws Exception {
+        User users = UserFactory
+                .createUser("garran","1234","active");
+
+        User copiedUser = new User
+                .Builder("test@test.comm").copy(address).postalCode("700").build();
+        Assert.assertEquals("test@test.com",address.getEmail());
+        Assert.assertEquals("test@test.com",copiedaddress.getEmail());
+        Assert.assertEquals("7557",address.getPostalCode());
+        Assert.assertEquals("700",copiedaddress.getPostalCode());
+
+    }
 }

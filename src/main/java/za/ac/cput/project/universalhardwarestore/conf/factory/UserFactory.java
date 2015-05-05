@@ -5,10 +5,22 @@
  */
 package za.ac.cput.project.universalhardwarestore.conf.factory;
 
+import java.util.List;
+import java.util.Map;
+import za.ac.cput.project.universalhardwarestore.domain.User;
+
 /**
  *
  * @author Garran
  */
 public class UserFactory {
+    public static User createUser(String userName,String password,String status){
     
+    User user = new User
+                .Builder(userName)
+                .password(password)
+                .status(status)
+                .build();
+        return user;
+    }
 }

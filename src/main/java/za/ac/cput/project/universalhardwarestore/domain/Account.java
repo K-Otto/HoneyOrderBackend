@@ -25,6 +25,7 @@ public class Account implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(unique = true)
+    private String accountNumber;
     private String status; 
     private double balance;
     @OneToMany(cascade = CascadeType.ALL)
@@ -38,12 +39,17 @@ public class Account implements Serializable{
         status=builder.status;
         balance=builder.balance;
         customer=builder.customer;
+        accountNumber=builder.accountNumber;
     }
 
     public String getStatus() {
         return status;
     }
 
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+        
     public double getBalance() {
         return balance;
     }
@@ -53,12 +59,18 @@ public class Account implements Serializable{
     }
     
     public static class Builder{
+        private String accountNumber;
         private String status;
         private double balance;
         private List<Customer> customer;
         
-        public Builder(String status) {
-            this.status = status;
+        public Builder(String accountNumber) {
+            this.accountNumber = accountNumber;
+        }
+        
+        public Builder status(String value){
+            this.status=value;
+            return this;
         }
         
         public Builder balance(double value){
@@ -94,6 +106,7 @@ public class Account implements Serializable{
     @Override
     public String toString() {
         return "Course{" +
+                ", accountNumber='" + accountNumber + '\'' +
                 ", Status='" + status + '\'' +
                 ", Balance='" + balance + '\'' +
                 '}';

@@ -5,10 +5,26 @@
  */
 package za.ac.cput.project.universalhardwarestore.conf.factory;
 
+import java.util.List;
+import java.util.Map;
+import za.ac.cput.project.universalhardwarestore.domain.ShoppingCart;
+
 /**
  *
  * @author Garran
  */
 public class ShoppingCartFactory {
-    
+            public static ShoppingCart createShoppingCart(int quantity,
+                        Map<String,String> values,
+                        List<ShoppingCart> stock){
+        ShoppingCart shoppingCart = new ShoppingCart
+                .Builder(values.get("stockCode"))
+                .stockName(values.get("stockName"))
+                .stockDescription(values.get("stockDescription"))
+                .quantity(Integer.parseInt(values.get("quantity")))
+                .price(Double.parseDouble(values.get("price")))
+                .suppliers(suppliers)
+                .build();
+        return Items;
+            }
 }

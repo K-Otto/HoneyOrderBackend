@@ -19,7 +19,8 @@ public class AccountFactory {
                         Map<String,String> values,
                         List<Customer> customer){
         Account account = new Account
-                .Builder(values.get("Active"))
+                .Builder(values.get("accountNumber"))
+                .status(values.get("status"))
                 .balance(balance)
                 .customer(customer)
                 .build();

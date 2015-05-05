@@ -14,17 +14,16 @@ import za.ac.cput.project.universalhardwarestore.domain.Address;
  * @author Garran
  */
 public class AddressFactory {
-    public static Address createAddress(
-        Map<String,String> values,
-        List<Address> customer){
-            Address account = new Address
-            .Builder(values.get("21 Vent Road"))
-            .addressLine2(values.get(""))
-            .suburb(values.get("Muizenberg"))
-            .city(values.get("Cape Town"))
-            .provence(values.get("Western Cape"))
-            .postalCode(values.get("7945"))
-            .build();
-    return account;
+    public static Address createAddress(String addressLine1,String addressLine2,String suburb,String city,String provence,String postalCode){
+    
+    Address address = new Address
+                .Builder(addressLine1)
+                .addressLine2(addressLine2)
+                .suburb(suburb)
+                .city(city)
+                .provence(provence)
+                .postalCode(postalCode)
+                .build();
+        return address;
     }
 }

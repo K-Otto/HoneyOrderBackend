@@ -72,6 +72,11 @@ public class Suppliers implements Serializable{
             this.supplierEmail=value;
             return this;
         }
+        
+        public Builder address(Address value){
+            this.address=value;
+            return this;
+        }
 
         public Suppliers build(){
             return new Suppliers(this);
