@@ -13,6 +13,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import za.ac.cput.project.universalhardwarestore.conf.factory.UserFactory;
+//import org.testng.Assert;
+//import org.testng.annotations.Test;
 
 /**
  *
@@ -36,11 +38,11 @@ public class UsersTest {
                 .createUser("garran","1234","active");
 
         User copiedUser = new User
-                .Builder("test@test.comm").copy(address).postalCode("700").build();
-        Assert.assertEquals("test@test.com",address.getEmail());
-        Assert.assertEquals("test@test.com",copiedaddress.getEmail());
-        Assert.assertEquals("7557",address.getPostalCode());
-        Assert.assertEquals("700",copiedaddress.getPostalCode());
+                .Builder("garran").copy(users).password("1234").status("active").build();
+        Assert.assertEquals("garran",users.getUserName());
+        Assert.assertEquals("garran",copiedUser.getUserName());
+        Assert.assertEquals("12341",users.getPassword());
+        Assert.assertEquals("1234",copiedUser.getPassword());
 
     }
 }

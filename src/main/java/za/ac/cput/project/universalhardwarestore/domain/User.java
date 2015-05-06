@@ -63,6 +63,13 @@ public class User implements Serializable{
             this.status=value;
             return this;
         }
+        
+        public Builder copy(User value){
+            this.userName=value.userName;
+            this.password=value.password;
+            this.status=value.status;
+            return this;
+        }
 
         public User build(){
             return new User(this);
