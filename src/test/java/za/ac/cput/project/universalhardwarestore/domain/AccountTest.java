@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import za.ac.cput.project.universalhardwarestore.conf.factory.AccountFactory;
 
 
 /**
@@ -54,12 +55,12 @@ public class AccountTest {
         values.put("price", "15");
 
         Account account = AccountFactory
-                .createStock(25, values, suppliers);
+                .createAccount(25, values, suppliers);
 
-        Stock newstock = new Stock
-                .Builder(stock.getStockCode())
-                .copy(stock)
-                .stockName("Bolts").build();
+        Account newaccount = new Account
+                .Builder(account.getAccountNumber())
+                //.copy(account)
+                .balance("Bolts").build();
 
         Assert.assertEquals("4545",newstock.getStockCode());
         Assert.assertEquals("Bolts",newstock.getStockName());
