@@ -5,12 +5,11 @@
  */
 package za.ac.cput.project.universalhardwarestore.repository;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import za.ac.cput.project.universalhardwarestore.conf.factory.AddressFactory;
+import za.ac.cput.project.universalhardwarestore.domain.Address;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 /**
  *
@@ -21,42 +20,53 @@ public class TestCrudAddress {
     private Long id;
 
     @Autowired
-    CourseRepository repository;
+    AddressRepository repository;
     @Test
-    public void testCreate() throws Exception {
-        List<Course> courses = new ArrayList<Course>();
-        Course course = new Course.Builder("311")
-                .name("National Diploma IT").offering(2015).build();
-        repository.save(course);
-        id=course.getId();
-        Assert.assertNotNull(course.getId());
+    public void create() throws Exception {
+        
+        Address address = AddressFactory
+                .createAddress("21 Vent Road","","Muizenberg","Cape Town","Western Cape","7945");
+
+        repository.save(address);
+        id=address.getId();
+        Assert.assertNotNull(address.getId());
     }
 
-    @Test
-    public void testRead() throws Exception {
-        Course course = repository.findOne(id);
-        Assert.assertEquals("National Diploma IT",course.getName());
-    }
+    @Test(dependsOnMethods = "create")
+    public void read() throws Exception {
+        Address address = repository.findOne(id);
+        Assert.assertNotNull(address);
 
-    @Test
-    public void testUpdate() throws Exception {
-
-        Course course = repository.findOne(id);
-        Course newcourse = new Course.Builder("12").id(course.getId())
-                .name("Diploma IT").offering(2014).build();
-        repository.save(newcourse);
-        Assert.assertEquals("Diploma IT", course.getName());
-        Assert.assertEquals(2014, course.getOffering());
 
     }
 
-    @Test
-    public void testDelete() throws Exception {
-        Course course = repository.findOne(id);
-        repository.delete(course);
-        Course newcourse = repository.findOne(id);
-        Assert.assertNull(newcourse);
+    @Test(dependsOnMethods = "read")
+    public void update() throws Exception {
+        Address address = repository.findOne(id);
 
+        Address newaddress = new Address
+                .Builder(address.getAddressLine1())
+                //.copy(address)
+                .addressLine2(addressLine2)
+                .city(city)
+                .postalCode(postalCode)
+                .provence(provence)
+                .suburb(suburb)
+                .build();
+
+        repository.save(newaddress);
+
+        Address updatedAddress = repository.findOne(id);
+        Assert.assertEquals(updatedAddress.getAddressLine1(),"garran");
+
+    }
+
+    @Test(dependsOnMethods = "update")
+    public void delete() throws Exception {
+        Address address = repository.findOne(id);
+        repository.delete(address);
+        Address deletedAddress = repository.findOne(id);
+        Assert.assertNull(deletedAddress);
 
     }
 }

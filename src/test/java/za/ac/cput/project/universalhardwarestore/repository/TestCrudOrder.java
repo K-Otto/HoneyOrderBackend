@@ -22,7 +22,7 @@ public class TestCrudOrder {
     private Long id;
 
     @Autowired
-    CourseRepository repository;
+    OrderRepository repository;
     @Test
     public void testCreate() throws Exception {
         List<Course> courses = new ArrayList<Course>();

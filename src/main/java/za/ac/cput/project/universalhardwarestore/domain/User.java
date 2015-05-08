@@ -32,6 +32,10 @@ public class User implements Serializable{
         password=builder.password;
         status=builder.status;
     }
+    
+    public Long getId() {
+        return id;
+    }
 
     public String getUserName() {
         return userName;

@@ -31,9 +31,12 @@ public class TestCrudAccount {
     public void testCreate() throws Exception {
         List<Account> accounts = new ArrayList<Account>();
         Account account = new Account.Builder("311")
-                .name("National Diploma IT").offering(2015).build();
+                .balance(12.00)
+                .status("Active")
+                .customer()
+                .build();
         repository.save(account);
-        id=account.getId();
+        id=account.getId;
         Assert.assertNotNull(account.getId());
     }
 

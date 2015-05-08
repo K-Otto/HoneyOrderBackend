@@ -23,6 +23,7 @@ public class AccountFactory {
                 .status(values.get("status"))
                 .balance(balance)
                 .customer(customer)
+                .accountNumber(accountNumber)
                 .build();
         return account;
     }

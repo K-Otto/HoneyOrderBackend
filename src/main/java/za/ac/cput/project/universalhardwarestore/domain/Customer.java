@@ -23,6 +23,7 @@ public class Customer implements Serializable{
     @Column(unique = true)
     private String phoneNumber; 
     private String email;
+    private User user;
     
     private Customer() {
     }
@@ -31,6 +32,7 @@ public class Customer implements Serializable{
         customerID=builder.customerID;
         phoneNumber=builder.phoneNumber;
         email=builder.email;
+        user=builder.user;
     }
 
     public int getCustomerID() {
@@ -44,12 +46,17 @@ public class Customer implements Serializable{
     public String getEmail() {
         return email;
     }
+
+    public User getUser() {
+        return user;
+    }
     
     public static class Builder{
 
         private int customerID;
         private String phoneNumber;
         private String email;
+        private User user;
         
         public Builder(String phoneNumber) {
             this.phoneNumber = phoneNumber;
@@ -62,6 +69,11 @@ public class Customer implements Serializable{
 
         public Builder email(String value){
             this.email=value;
+            return this;
+        }
+        
+        public Builder user(User value){
+            this.user=value;
             return this;
         }
 
@@ -92,6 +104,7 @@ public class Customer implements Serializable{
                 "customerID=" + customerID +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
+                ", user='" + user + '\'' +
                 '}';
     }
 }

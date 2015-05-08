@@ -36,6 +36,10 @@ public class Suppliers implements Serializable{
         supplierEmail=builder.supplierEmail;
     }
     
+    public Long getId() {
+        return id;
+    }
+    
     public Address getAddress() {
         return address;
     }

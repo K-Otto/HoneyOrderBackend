@@ -7,10 +7,13 @@ package za.ac.cput.project.universalhardwarestore.repository;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import za.ac.cput.project.universalhardwarestore.domain.Customer;
 
 /**
  *
@@ -21,41 +24,41 @@ public class TestCrudCustomer {
     private Long id;
 
     @Autowired
-    CourseRepository repository;
+    CustomerRepository repository;
     @Test
     public void testCreate() throws Exception {
-        List<Course> courses = new ArrayList<Course>();
-        Course course = new Course.Builder("311")
+        List<Customer> customer = new ArrayList<Customer>();
+        Customer customer = new Customer.Builder("311")
                 .name("National Diploma IT").offering(2015).build();
-        repository.save(course);
-        id=course.getId();
-        Assert.assertNotNull(course.getId());
+        repository.save(customer);
+        id=customer.getId();
+        Assert.assertNotNull(customer.getId());
     }
 
     @Test
     public void testRead() throws Exception {
-        Course course = repository.findOne(id);
-        Assert.assertEquals("National Diploma IT",course.getName());
+        Customer customer = repository.findOne(id);
+        Assert.assertEquals("National Diploma IT",customer.getName());
     }
 
     @Test
     public void testUpdate() throws Exception {
 
-        Course course = repository.findOne(id);
-        Course newcourse = new Course.Builder("12").id(course.getId())
+        Customer customer = repository.findOne(id);
+        Customer newcustomer = new Customer.Builder("12").id(customer.getId())
                 .name("Diploma IT").offering(2014).build();
-        repository.save(newcourse);
-        Assert.assertEquals("Diploma IT", course.getName());
-        Assert.assertEquals(2014, course.getOffering());
+        repository.save(newcustomer);
+        Assert.assertEquals("Diploma IT", customer.getName());
+        Assert.assertEquals(2014, customer.getOffering());
 
     }
 
     @Test
     public void testDelete() throws Exception {
-        Course course = repository.findOne(id);
-        repository.delete(course);
-        Course newcourse = repository.findOne(id);
-        Assert.assertNull(newcourse);
+        Customer customer = repository.findOne(id);
+        repository.delete(customer);
+        Customer newcustomer = repository.findOne(id);
+        Assert.assertNull(newcustomer);
 
 
     }

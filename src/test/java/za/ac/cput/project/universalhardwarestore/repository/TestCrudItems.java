@@ -21,7 +21,7 @@ public class TestCrudItems {
     private Long id;
 
     @Autowired
-    CourseRepository repository;
+    ItemsRepository repository;
     @Test
     public void testCreate() throws Exception {
         List<Course> courses = new ArrayList<Course>();

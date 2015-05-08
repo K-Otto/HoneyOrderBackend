@@ -23,12 +23,12 @@ import za.ac.cput.project.universalhardwarestore.domain.Suppliers;
  */
 public class TestCrudSuppliers {
    private Long id;
-
     @Autowired
     SuppliersRepository repository;
+    
     @Test
     public void testCreate() throws Exception {
-        List<Suppliers> supplierss = new ArrayList<Course>();
+        List<Suppliers> supplierss = new ArrayList<Suppliers>();
         Suppliers suppliers = new Suppliers.Builder("311")
                 .name("National Diploma IT").offering(2015).build();
         repository.save(suppliers);
@@ -45,11 +45,11 @@ public class TestCrudSuppliers {
     @Test
     public void testUpdate() throws Exception {
 
-        Suppliers course = repository.findOne(id);
-        Suppliers newcourse = new Suppliers.Builder("12").id(suppliers.getId())
+        Suppliers suppliers = repository.findOne(id);
+        Suppliers newsuppliers = new Suppliers.Builder("12").id(suppliers.getId())
                 .name("Diploma IT").offering(2014).build();
-        repository.save(newcourse);
-        Assert.assertEquals("Diploma IT", suppliers.getName());
+        repository.save(newsuppliers);
+        Assert.assertEquals("Diploma IT", suppliers.getSupplierNumber());
         Assert.assertEquals(2014, suppliers.getOffering());
     }
 

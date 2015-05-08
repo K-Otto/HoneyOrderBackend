@@ -51,7 +51,7 @@ public class TestCrudOrderStatus {
                 .name("Diploma IT").offering(2014).build();
         repository.save(neworderStatus);
         Assert.assertEquals("Diploma IT", orderStatus.getName());
-        Assert.assertEquals(2014, course.getOffering());
+        Assert.assertEquals(2014, orderStatus.getOffering());
 
     }
 

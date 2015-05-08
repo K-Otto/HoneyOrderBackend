@@ -41,6 +41,10 @@ public class Account implements Serializable{
         customer=builder.customer;
         accountNumber=builder.accountNumber;
     }
+    
+    public Long getId() {
+        return id;
+    }
 
     public String getStatus() {
         return status;
@@ -75,6 +79,11 @@ public class Account implements Serializable{
         
         public Builder balance(double value){
             this.balance=value;
+            return this;
+        }
+        
+        public Builder accountNumber(String value){
+            this.accountNumber=value;
             return this;
         }
         

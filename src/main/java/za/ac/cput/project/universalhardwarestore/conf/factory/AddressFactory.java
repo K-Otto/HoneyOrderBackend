@@ -5,8 +5,6 @@
  */
 package za.ac.cput.project.universalhardwarestore.conf.factory;
 
-import java.util.List;
-import java.util.Map;
 import za.ac.cput.project.universalhardwarestore.domain.Address;
 
 /**
