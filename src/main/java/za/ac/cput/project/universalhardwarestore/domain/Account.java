@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,9 +29,14 @@ public class Account implements Serializable{
     private String accountNumber;
     private String status; 
     private double balance;
+    @Embedded
+    private Customer customer;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="course_id")
-    private List<Customer> customer;
+    @JoinColumn(name="shoppingCart_id")
+    private List<ShoppingCart> shoppingCart;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="order_id")
+    private List<Order> order;
     
     private Account() {
     }
@@ -38,8 +44,10 @@ public class Account implements Serializable{
     public Account(Account.Builder builder) {
         status=builder.status;
         balance=builder.balance;
-        customer=builder.customer;
         accountNumber=builder.accountNumber;
+        customer=builder.customer;
+        shoppingCart=builder.shoppingCart;
+        order=builder.order;
     }
     
     public Long getId() {
@@ -58,16 +66,26 @@ public class Account implements Serializable{
         return balance;
     }
     
-    public List<Customer> getCustomer() {
+    public Customer getCustomer() {
         return customer;
+    }
+    
+    public List<ShoppingCart> getShoppingCart() {
+        return shoppingCart;
+    }
+        
+    public List<Order> getOrder() {
+        return order;
     }
     
     public static class Builder{
         private String accountNumber;
         private String status;
         private double balance;
-        private List<Customer> customer;
-        
+        private Customer customer;
+        private List<ShoppingCart> shoppingCart;
+        private List<Order> order;
+    
         public Builder(String accountNumber) {
             this.accountNumber = accountNumber;
         }
@@ -87,8 +105,18 @@ public class Account implements Serializable{
             return this;
         }
         
-        public Builder customer(List<Customer> value){
+        public Builder customer(Customer value){
             this.customer=value;
+            return this;
+        }
+        
+        public Builder shoppingCart(List<ShoppingCart> value){
+            this.shoppingCart=value;
+            return this;
+        }
+        
+        public Builder order(List<Order> value){
+            this.order=value;
             return this;
         }
 
@@ -120,6 +148,4 @@ public class Account implements Serializable{
                 ", Balance='" + balance + '\'' +
                 '}';
     }
-    
-
 }

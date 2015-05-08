@@ -15,7 +15,7 @@ import javax.persistence.Id;
  *
  * @author Garran
  */
-public class User implements Serializable{
+public class Users implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -24,10 +24,10 @@ public class User implements Serializable{
     private String password;
     private String status;
     
-    private User() {
+    private Users() {
     }
     
-    public User(Builder builder) {
+    public Users(Builder builder) {
         userName=builder.userName;
         password=builder.password;
         status=builder.status;
@@ -68,15 +68,15 @@ public class User implements Serializable{
             return this;
         }
         
-        public Builder copy(User value){
+        public Builder copy(Users value){
             this.userName=value.userName;
             this.password=value.password;
             this.status=value.status;
             return this;
         }
 
-        public User build(){
-            return new User(this);
+        public Users build(){
+            return new Users(this);
         }
         
     }
@@ -84,9 +84,9 @@ public class User implements Serializable{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
+        if (!(o instanceof Users)) return false;
 
-        User user = (User) o;
+        Users user = (Users) o;
 
         return !(id != null ? !id.equals(user.id) : user.id != null);
 

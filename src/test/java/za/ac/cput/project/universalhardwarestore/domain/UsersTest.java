@@ -12,10 +12,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import za.ac.cput.project.universalhardwarestore.conf.factory.UserFactory;
+import za.ac.cput.project.universalhardwarestore.conf.factory.UsersFactory;
 //import org.testng.Assert;
 //import org.testng.annotations.Test;
-
 /**
  *
  * @author Garran
@@ -27,17 +26,17 @@ public class UsersTest {
     
     @Test
     public void testCreate() throws Exception {
-        User users = UserFactory
+        Users users = UsersFactory
                 .createUser("garran","1234","active");
         Assert.assertEquals("garran",users.getUserName());
     }
 
     @Test
     public void testUpdate() throws Exception {
-        User users = UserFactory
+        Users users = UsersFactory
                 .createUser("garran","1234","active");
 
-        User copiedUser = new User
+        Users copiedUser = new Users
                 .Builder("garran").copy(users).password("1234").status("active").build();
         Assert.assertEquals("garran",users.getUserName());
         Assert.assertEquals("garran",copiedUser.getUserName());

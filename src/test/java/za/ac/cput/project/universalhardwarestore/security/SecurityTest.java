@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.cput.project.universalhardwarestore.services;
+package za.ac.cput.project.universalhardwarestore.security;
 
 /**
  *
  * @author Garran
  */
-public interface UserService {
+public class SecurityTest {
     
 }

@@ -7,16 +7,16 @@ package za.ac.cput.project.universalhardwarestore.conf.factory;
 
 import java.util.List;
 import java.util.Map;
-import za.ac.cput.project.universalhardwarestore.domain.User;
+import za.ac.cput.project.universalhardwarestore.domain.Users;
 
 /**
  *
  * @author Garran
  */
-public class UserFactory {
-    public static User createUser(String userName,String password,String status){
+public class UsersFactory {
+    public static Users createUser(String userName,String password,String status){
     
-    User user = new User
+    Users user = new Users
                 .Builder(userName)
                 .password(password)
                 .status(status)

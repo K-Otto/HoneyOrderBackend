@@ -8,8 +8,8 @@ package za.ac.cput.project.universalhardwarestore.repository;
 //import org.junit.Assert;
 //import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import za.ac.cput.project.universalhardwarestore.conf.factory.UserFactory;
-import za.ac.cput.project.universalhardwarestore.domain.User;
+import za.ac.cput.project.universalhardwarestore.conf.factory.UsersFactory;
+import za.ac.cput.project.universalhardwarestore.domain.Users;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -21,12 +21,12 @@ public class TestCrudUsers {
         private Long id;
 
     @Autowired
-    private UserRepository repository;
+    private UsersRepository repository;
 
     @Test
     public void create() throws Exception {
         
-        User user = UserFactory
+        Users user = UsersFactory
                 .createUser("garran","1234","active");
 
         repository.save(user);
@@ -36,7 +36,7 @@ public class TestCrudUsers {
 
     @Test(dependsOnMethods = "create")
     public void read() throws Exception {
-        User user = repository.findOne(id);
+        Users user = repository.findOne(id);
         Assert.assertNotNull(user);
 
 
@@ -44,9 +44,9 @@ public class TestCrudUsers {
 
     @Test(dependsOnMethods = "read")
     public void update() throws Exception {
-        User user = repository.findOne(id);
+        Users user = repository.findOne(id);
 
-        User newuser = new User
+        Users newuser = new Users
                 .Builder(user.getUserName())
                 .copy(user)
                 //.password(password)
@@ -55,16 +55,16 @@ public class TestCrudUsers {
 
         repository.save(newuser);
 
-        User updatedUser = repository.findOne(id);
+        Users updatedUser = repository.findOne(id);
         Assert.assertEquals(updatedUser.getUserName(),"garran");
 
     }
 
     @Test(dependsOnMethods = "update")
     public void delete() throws Exception {
-        User user = repository.findOne(id);
+        Users user = repository.findOne(id);
         repository.delete(user);
-        User deletedUser = repository.findOne(id);
+        Users deletedUser = repository.findOne(id);
         Assert.assertNull(deletedUser);
 
     }

@@ -8,21 +8,21 @@ package za.ac.cput.project.universalhardwarestore.services.Impl;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import za.ac.cput.project.universalhardwarestore.domain.User;
-import za.ac.cput.project.universalhardwarestore.repository.UserRepository;
-import za.ac.cput.project.universalhardwarestore.services.UserService;
+import za.ac.cput.project.universalhardwarestore.domain.Users;
+import za.ac.cput.project.universalhardwarestore.repository.UsersRepository;
+import za.ac.cput.project.universalhardwarestore.services.UsersService;
 
 /**
  *
  * @author Garran
  */
-public class UserServiceImpl implements UserService{
+public class UsersServiceImpl implements UsersService{
     @Autowired
-    UserRepository repository;
-    public List<User> getUsers() {
-        List<User> allusers = new ArrayList<User>();
-        Iterable<User> users = repository.findAll();
-        for (User user : users) {
+    UsersRepository repository;
+    public List<Users> getUsers() {
+        List<Users> allusers = new ArrayList<Users>();
+        Iterable<Users> users = repository.findAll();
+        for (Users user : users) {
             allusers.add(user);
         }
         return allusers;

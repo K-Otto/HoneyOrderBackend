@@ -6,12 +6,12 @@
 package za.ac.cput.project.universalhardwarestore.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import za.ac.cput.project.universalhardwarestore.domain.User;
+import za.ac.cput.project.universalhardwarestore.domain.Users;
 
 /**
  *
  * @author Garran
  */
-public interface UserRepository extends CrudRepository<User,Long>{
-    public User findByCode(String userName);
+public interface UsersRepository extends CrudRepository<Users,Long>{
+    public Users findByCode(String userName);
 }

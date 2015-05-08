@@ -34,6 +34,8 @@ public class Suppliers implements Serializable{
     public Suppliers(Suppliers.Builder builder) {
         supplierName=builder.supplierName;
         supplierEmail=builder.supplierEmail;
+        address=builder.address;
+        supplierNumber=builder.supplierNumber;
     }
     
     public Long getId() {
@@ -57,7 +59,6 @@ public class Suppliers implements Serializable{
     }
     
     public static class Builder{
-
         private Address address;
         private String supplierName;
         private String supplierNumber;
@@ -81,6 +82,14 @@ public class Suppliers implements Serializable{
             this.address=value;
             return this;
         }
+        
+        public Builder copy(Suppliers value){
+            this.address=value.address;
+            this.supplierEmail=value.supplierEmail;
+            this.supplierName=value.supplierName;
+            this.supplierNumber=value.supplierNumber;
+            return this;
+        }
 
         public Suppliers build(){
             return new Suppliers(this);
@@ -95,7 +104,6 @@ public class Suppliers implements Serializable{
         Suppliers supplier = (Suppliers) o;
 
         return !(supplierName != null ? !supplierName.equals(supplier.supplierName) : supplier.supplierName != null);
-
     }
     
     @Override

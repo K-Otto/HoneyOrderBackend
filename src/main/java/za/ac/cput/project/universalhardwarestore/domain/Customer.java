@@ -23,7 +23,7 @@ public class Customer implements Serializable{
     @Column(unique = true)
     private String phoneNumber; 
     private String email;
-    private User user;
+    private Users user;
     
     private Customer() {
     }
@@ -47,7 +47,7 @@ public class Customer implements Serializable{
         return email;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
     
@@ -56,7 +56,7 @@ public class Customer implements Serializable{
         private int customerID;
         private String phoneNumber;
         private String email;
-        private User user;
+        private Users user;
         
         public Builder(String phoneNumber) {
             this.phoneNumber = phoneNumber;
@@ -72,7 +72,7 @@ public class Customer implements Serializable{
             return this;
         }
         
-        public Builder user(User value){
+        public Builder user(Users value){
             this.user=value;
             return this;
         }

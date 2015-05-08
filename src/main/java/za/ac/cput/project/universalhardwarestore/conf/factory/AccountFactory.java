@@ -15,16 +15,17 @@ import za.ac.cput.project.universalhardwarestore.domain.Customer;
  * @author Garran
  */
 public class AccountFactory {
-    public static Account createAccount(double balance,
-                        Map<String,String> values,
-                        List<Customer> customer){
-        Account account = new Account
-                .Builder(values.get("accountNumber"))
-                .status(values.get("status"))
-                .balance(balance)
-                .customer(customer)
-                .accountNumber(accountNumber)
-                .build();
-        return account;
-    }
+//    public static Account createAccount(double balance,
+//                        Map<String,String> values,
+//                        List<Customer> customer){
+//        Account account = new Account
+//                .Builder(values.get("accountNumber"))
+//                .status(values.get("status"))
+//                .balance(balance)
+//                .customer(customer)
+//                .
+//                .accountNumber(accountNumber)
+//                .build();
+//        return account;
+//    }
 }
