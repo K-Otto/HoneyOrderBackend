@@ -8,17 +8,23 @@ package za.ac.cput.project.universalhardwarestore.repository;
 //import org.junit.Assert;
 //import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.test.context.web.WebAppConfiguration;
 import za.ac.cput.project.universalhardwarestore.conf.factory.UsersFactory;
 import za.ac.cput.project.universalhardwarestore.domain.Users;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import za.ac.cput.project.universalhardwarestore.App;
 
 /**
  *
  * @author Garran
  */
+@SpringApplicationConfiguration(classes= App.class)
+@WebAppConfiguration
 public class TestCrudUsers {
-        private Long id;
+    private Long id;
 
     @Autowired
     private UsersRepository repository;
@@ -57,7 +63,6 @@ public class TestCrudUsers {
 
         Users updatedUser = repository.findOne(id);
         Assert.assertEquals(updatedUser.getUserName(),"garran");
-
     }
 
     @Test(dependsOnMethods = "update")
@@ -66,6 +71,5 @@ public class TestCrudUsers {
         repository.delete(user);
         Users deletedUser = repository.findOne(id);
         Assert.assertNull(deletedUser);
-
     }
 }

@@ -31,6 +31,7 @@ public class Users implements Serializable{
         userName=builder.userName;
         password=builder.password;
         status=builder.status;
+        id=builder.id;
     }
     
     public Long getId() {
@@ -53,11 +54,17 @@ public class Users implements Serializable{
         private String userName;
         private String password;
         private String status;
+        private Long id;
         
         public Builder(String userName) {
             this.userName = userName;
         }
-
+        
+        public Builder id(Long value){
+            this.id=value;
+            return this;
+        }
+        
         public Builder password(String value){
             this.password=value;
             return this;
@@ -72,6 +79,7 @@ public class Users implements Serializable{
             this.userName=value.userName;
             this.password=value.password;
             this.status=value.status;
+            this.id=value.id;
             return this;
         }
 
@@ -100,6 +108,7 @@ public class Users implements Serializable{
     @Override
     public String toString() {
         return "Course{" +
+                ", Id='" + id + '\'' +
                 ", Username='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", Status='" + status + '\'' +
