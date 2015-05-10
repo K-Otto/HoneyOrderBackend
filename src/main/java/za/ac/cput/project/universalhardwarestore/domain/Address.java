@@ -93,6 +93,16 @@ public class Address implements Serializable{
             this.postalCode=value;
             return this;
         }
+        
+        public Builder copy(Address value){
+            this.addressLine1=value.addressLine1;
+            this.addressLine2 = value.addressLine2;
+            this.city=value.city;
+            this.postalCode=value.postalCode;
+            this.provence=value.provence;
+            this.suburb=value.suburb;
+            return this;
+        }
 
         public Address build(){
             return new Address(this);
