@@ -6,6 +6,7 @@
 package za.ac.cput.project.universalhardwarestore.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,11 +20,14 @@ public class Customer implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int customerID;
+    private Long id;
     @Column(unique = true)
+    private String customerID;
     private String phoneNumber; 
     private String email;
     private Users user;
+    private Address address;
+    private Account account;
     
     private Customer() {
     }
@@ -33,9 +37,16 @@ public class Customer implements Serializable{
         phoneNumber=builder.phoneNumber;
         email=builder.email;
         user=builder.user;
+        address=builder.address;
+        account=builder.account;
+        id=builder.id;
+    }
+    
+    public Long getId() {
+        return id;
     }
 
-    public int getCustomerID() {
+    public String getCustomerID() {
         return customerID;
     }
 
@@ -51,19 +62,34 @@ public class Customer implements Serializable{
         return user;
     }
     
+    public Account getAccount() {
+        return account;
+    }
+        
+    public Address getAddress() {
+        return address;
+    }
+    
     public static class Builder{
-
-        private int customerID;
+        private Long id;
+        private String customerID;
         private String phoneNumber;
         private String email;
         private Users user;
+        private Address address;
+        private Account account;
         
-        public Builder(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
+        public Builder(String customerID) {
+            this.customerID = customerID;
         }
         
-        public Builder customerID(int value){
-            this.customerID=value;
+        public Builder id(Long value){
+            this.id=value;
+            return this;
+        }
+        
+        public Builder phoneNumber(String value){
+            this.phoneNumber=value;
             return this;
         }
 
@@ -76,28 +102,57 @@ public class Customer implements Serializable{
             this.user=value;
             return this;
         }
+        
+        public Builder address(Address value){
+            this.address=value;
+            return this;
+        }
+        
+        public Builder account(Account value){
+            this.account=value;
+            return this;
+        }
+        
+        public Builder copy(Customer value){
+            this.account=value.account;
+            this.address=value.address;
+            this.customerID=value.customerID;
+            this.id=value.id;
+            this.phoneNumber=value.phoneNumber;
+            this.user=value.user;
+            return this;
+        }
+
+//        public Builder() {
+//        }
 
         public Customer build(){
             return new Customer(this);
         }
     }
-    
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Customer)) return false;
 
-        Customer customer = (Customer) o;
-
-        return !(phoneNumber != null ? !phoneNumber.equals(customer.phoneNumber) : customer.phoneNumber != null);
-
-    }
-    
     @Override
     public int hashCode() {
-        return phoneNumber != null ? phoneNumber.hashCode() : 0;
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        return hash;
     }
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Customer other = (Customer) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         return "Course{" +

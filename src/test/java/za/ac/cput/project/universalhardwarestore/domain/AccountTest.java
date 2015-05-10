@@ -12,6 +12,7 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import za.ac.cput.project.universalhardwarestore.conf.factory.AccountFactory;
+import za.ac.cput.project.universalhardwarestore.conf.factory.CustomerFactory;
 
 
 /**
@@ -25,7 +26,7 @@ public class AccountTest {
     
     @Test
     public void testCreateStock() throws Exception {
-        Customer customer;
+        Customer customer = new Customer();
         Map<String,String> values = new HashMap<String,String>();
         List<ShoppingCart> shoppingCart = new ArrayList<ShoppingCart>();
         List<Order> order = new ArrayList<Order>();

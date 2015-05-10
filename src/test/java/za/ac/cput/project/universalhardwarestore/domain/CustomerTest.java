@@ -5,12 +5,13 @@
  */
 package za.ac.cput.project.universalhardwarestore.domain;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import java.util.HashMap;
+import java.util.Map;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import za.ac.cput.project.universalhardwarestore.conf.factory.AddressFactory;
+import za.ac.cput.project.universalhardwarestore.conf.factory.CustomerFactory;
+import za.ac.cput.project.universalhardwarestore.conf.factory.UsersFactory;
 
 /**
  *
@@ -18,28 +19,32 @@ import static org.junit.Assert.*;
  */
 public class CustomerTest {
     
-    public CustomerTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+            @Test
+    public void testCreate() throws Exception {
+        Users users = UsersFactory
+                .createUser("garran","1234","active");
+        
+        Account account;
+        Address address = AddressFactory
+                .createAddress("21 Vent Road","","Muizenberg","Cape Town","Western Cape","7945");
+        
+        Map<String,String> values = new HashMap<String,String>();
+        Customer customer = CustomerFactory
+                .createCustomer(values,users,account,address);
+        Assert.assertEquals("21 Vent Road",customer.getCustomerID());
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void testUpdate() throws Exception {
+        Address address = AddressFactory
+                .createAddress("21 Vent Road","","Muizenberg","Cape Town","Western Cape","7945");
+
+        Address copiedaddress = new Address
+                .Builder("21 Vent Road").copy(address).addressLine2("").suburb("Muizenberg").city("Cape Town").provence("Western Cape").postalCode("7945").build();
+        Assert.assertEquals("Muizenberg",address.getSuburb());
+        Assert.assertEquals("Muizenberg",copiedaddress.getSuburb());
+        Assert.assertEquals("7945",address.getPostalCode());
+        Assert.assertEquals("7945",copiedaddress.getPostalCode());
+
+    }
 }

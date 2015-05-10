@@ -5,23 +5,29 @@
  */
 package za.ac.cput.project.universalhardwarestore.conf.factory;
 
-import java.util.List;
 import java.util.Map;
+import za.ac.cput.project.universalhardwarestore.domain.Account;
+import za.ac.cput.project.universalhardwarestore.domain.Address;
 import za.ac.cput.project.universalhardwarestore.domain.Customer;
+import za.ac.cput.project.universalhardwarestore.domain.Users;
 
 /**
  *
  * @author Garran
  */
 public class CustomerFactory {
-        public static Customer createCustomer(int customerID,
+        public static Customer createCustomer(
         Map<String,String> values,
-        List<Customer> customer){
-            Customer account = new Customer
+                Users users,
+                Account account,
+                Address address){
+            Customer customer = new Customer
             .Builder(values.get("086487678"))
-            .customerID(customerID)
+            .account(account)
+            .address(address)
+            .phoneNumber(values.get("0111675436"))
             .email(values.get("garran@gmail.com"))
             .build();
-    return account;
+    return customer;
     }
 }
