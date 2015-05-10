@@ -7,6 +7,7 @@ package za.ac.cput.project.universalhardwarestore.repository;
 
 //import org.junit.Assert;
 //import org.junit.Test;
+import org.junit.Ignore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -21,17 +22,15 @@ import za.ac.cput.project.universalhardwarestore.App;
  *
  * @author Garran
  */
-@SpringApplicationConfiguration(classes= App.class)
+@SpringApplicationConfiguration(classes=App.class)
 @WebAppConfiguration
-public class TestCrudUsers {
+public class TestCrudUsers extends AbstractTestNGSpringContextTests{
     private Long id;
 
     @Autowired
-    private UsersRepository repository;
-
+    UsersRepository repository;    
     @Test
     public void create() throws Exception {
-        
         Users user = UsersFactory
                 .createUser("garran","1234","active");
 
@@ -39,7 +38,6 @@ public class TestCrudUsers {
         id=user.getId();
         Assert.assertNotNull(user.getId());
     }
-
     @Test(dependsOnMethods = "create")
     public void read() throws Exception {
         Users user = repository.findOne(id);

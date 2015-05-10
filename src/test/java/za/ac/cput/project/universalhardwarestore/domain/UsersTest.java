@@ -5,16 +5,12 @@
  */
 package za.ac.cput.project.universalhardwarestore.domain;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+//import org.junit.Assert;
+//import org.junit.Test;
 import za.ac.cput.project.universalhardwarestore.conf.factory.UsersFactory;
-//import org.testng.Assert;
-//import org.testng.annotations.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 /**
  *
  * @author Garran
@@ -40,7 +36,7 @@ public class UsersTest {
                 .Builder("garran").copy(users).password("1234").status("active").build();
         Assert.assertEquals("garran",users.getUserName());
         Assert.assertEquals("garran",copiedUser.getUserName());
-        Assert.assertEquals("12341",users.getPassword());
+        Assert.assertEquals("1234",users.getPassword());
         Assert.assertEquals("1234",copiedUser.getPassword());
 
     }

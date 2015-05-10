@@ -48,6 +48,7 @@ public class Account implements Serializable{
         customer=builder.customer;
         shoppingCart=builder.shoppingCart;
         order=builder.order;
+        id=builder.id;
     }
     
     public Long getId() {
@@ -85,6 +86,7 @@ public class Account implements Serializable{
         private Customer customer;
         private List<ShoppingCart> shoppingCart;
         private List<Order> order;
+        private Long id;
     
         public Builder(String accountNumber) {
             this.accountNumber = accountNumber;
@@ -117,6 +119,16 @@ public class Account implements Serializable{
         
         public Builder order(List<Order> value){
             this.order=value;
+            return this;
+        }
+        
+        public Builder copy(Account value){
+            this.accountNumber=value.accountNumber;
+            this.balance = value.balance;
+            this.customer=value.customer;
+            this.shoppingCart=value.shoppingCart;
+            this.status=value.status;
+            this.id=value.id;
             return this;
         }
 

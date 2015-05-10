@@ -5,8 +5,6 @@
  */
 package za.ac.cput.project.universalhardwarestore.conf.factory;
 
-import java.util.List;
-import java.util.Map;
 import za.ac.cput.project.universalhardwarestore.domain.Users;
 
 /**
@@ -18,6 +16,7 @@ public class UsersFactory {
     
     Users user = new Users
                 .Builder(userName)
+                //.id(id)
                 .password(password)
                 .status(status)
                 .build();

@@ -9,13 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import za.ac.cput.project.universalhardwarestore.conf.factory.AccountFactory;
 
 
@@ -25,46 +20,45 @@ import za.ac.cput.project.universalhardwarestore.conf.factory.AccountFactory;
  */
 public class AccountTest {
     
-//    public AccountTest() {
-//    }
-//    
-//    @Test
-//    public void testCreateStock() throws Exception {
-//        List<Suppliers> suppliers = new ArrayList<Suppliers>();
-//        Map<String,String> values = new HashMap<String,String>();
-//
-//        values.put("stockCode","4545");
-//        values.put("stockName", "Bolts");
-//        values.put("stockDescription", "Silver");
-//        values.put("quantity", "12");
-//        values.put("price", "15");
-//        
-//        Account account = AccountFactory.createAccount(25, values, suppliers);
-//        
-//        Assert.assertEquals("Bolts",account.getStockName());
-//    }
-//    
-//    public void testUpadteCourse() throws Exception {
-//        List<Suppliers> suppliers = new ArrayList<Suppliers>();
-//        Map<String,String> values = new HashMap<String,String>();
-//
-//        values.put("stockCode","4545");
-//        values.put("stockName", "Bolts");
-//        values.put("stockDescription", "Silver");
-//        values.put("quantity", "12");
-//        values.put("price", "15");
-//
-//        Account account = AccountFactory
-//                .createAccount(25, values, suppliers);
-//
-//        Account newaccount = new Account
-//                .Builder(account.getAccountNumber())
-//                //.copy(account)
-//                .balance("Bolts").build();
-//
-//        Assert.assertEquals("4545",newstock.getStockCode());
-//        Assert.assertEquals("Bolts",newstock.getStockName());
-//        Assert.assertEquals(20,newstock.getQuantity());
-//        Assert.assertEquals(25,stock.getQuantity());
-//    }
+    public AccountTest() {
+    }
+    
+    @Test
+    public void testCreateStock() throws Exception {
+        Customer customer;
+        Map<String,String> values = new HashMap<String,String>();
+        List<ShoppingCart> shoppingCart = new ArrayList<ShoppingCart>();
+        List<Order> order = new ArrayList<Order>();
+        values.put("accountNumber","245456567");
+        values.put("status", "active");
+        values.put("balance", "1000");
+        
+        Account account = AccountFactory.createAccount(25.00, customer, values, shoppingCart, order);
+        
+        Assert.assertEquals("245456567",account.getAccountNumber());
+    }
+    
+    public void testUpadteCourse() throws Exception {
+        Customer customer;
+        Map<String,String> values = new HashMap<String,String>();
+        List<ShoppingCart> shoppingCart = new ArrayList<ShoppingCart>();
+        List<Order> order = new ArrayList<Order>();
+        values.put("accountNumber","245456567");
+        values.put("status", "active");
+        values.put("balance", "1000");
+
+        Account account = AccountFactory.createAccount(25.00, customer, values, shoppingCart, order);
+
+        Account newaccount = new Account
+                .Builder(account.getAccountNumber())
+                .balance(account.getBalance())
+                .status(account.getStatus())
+                .copy(account)
+                .build();
+
+        Assert.assertEquals("245456567",newaccount.getAccountNumber());
+        Assert.assertEquals("1000",newaccount.getBalance());
+        Assert.assertEquals("active",newaccount.getStatus());
+        Assert.assertEquals("active",account.getStatus());
+    }
 }
