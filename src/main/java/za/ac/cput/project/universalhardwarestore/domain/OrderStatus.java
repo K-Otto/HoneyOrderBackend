@@ -39,10 +39,14 @@ public class OrderStatus implements Serializable{
         private String orderStatus;
         private String description;
         
-        public Builder orderStatus(String value){
-            this.orderStatus=value;
-            return this;
+        public Builder(String value){
+            this.orderStatus=orderStatus;
         }
+        
+//        public Builder orderStatus(String value){
+//            this.orderStatus=value;
+//            return this;
+//        }
         
         public Builder description(String value){
             this.description=value;

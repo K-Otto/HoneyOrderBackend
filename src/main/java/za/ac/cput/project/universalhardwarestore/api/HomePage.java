@@ -6,9 +6,10 @@
 package za.ac.cput.project.universalhardwarestore.api;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import za.ac.cput.project.universalhardwarestore.domain.Stock;
 import za.ac.cput.project.universalhardwarestore.services.Impl.StockServiceImpl;
+import za.ac.cput.project.universalhardwarestore.domain.Users;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,12 +28,22 @@ public class HomePage {
         return "This is a Home Page";
     }
     
-    //RequestMapping(value = "/stock",method = RequestMethod.GET)
-    public Stock getStock(){
-        Stock stock = new Stock.Builder("12345")
-                .stockName("Drill").stockDescription("Power Drill").quantity(12).price(100.00).build();
-        return stock;
-    }
+//    RequestMapping(value = "/stock",method = RequestMethod.GET)
+//    public Stock getStock(){
+//        Stock stock = new Stock.Builder("12345")
+//                .stockName("Drill").stockDescription("Power Drill").quantity(12).price(100.00).build();
+//        return stock;
+//    }
+    
+//    RequestMapping(value = "/users",method = RequestMethod.GET)
+//    public Users getUsers(){
+//        Users users = new Users.Builder("garran")
+//                .password("1234").status("Active").build();
+//        return users;
+//    }
+    
+    
+    
     
     @RequestMapping(value = "/stocks", method = RequestMethod.GET)
     public List<Stock> getStocks(){

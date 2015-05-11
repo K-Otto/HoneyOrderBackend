@@ -16,7 +16,7 @@ import javax.persistence.Id;
  *
  * @author Garran
  */
-public class Customer implements Serializable{
+public class CustomerAccount implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,20 +26,26 @@ public class Customer implements Serializable{
     private String phoneNumber; 
     private String email;
     private Users user;
+    private String accountNumber;
+    private String status; 
+    private double balance;
     private Address address;
-    private Account account;
+    //private Account account;
     
-    private Customer() {
+    private CustomerAccount() {
     }
     
-    public Customer(Customer.Builder builder) {
+    public CustomerAccount(CustomerAccount.Builder builder) {
         customerID=builder.customerID;
         phoneNumber=builder.phoneNumber;
         email=builder.email;
         user=builder.user;
         address=builder.address;
-        account=builder.account;
+        //account=builder.account;
         id=builder.id;
+        accountNumber=builder.accountNumber;
+        status=builder.status;
+        balance=builder.balance;
     }
     
     public Long getId() {
@@ -61,10 +67,23 @@ public class Customer implements Serializable{
     public Users getUser() {
         return user;
     }
-    
-    public Account getAccount() {
-        return account;
+
+    public String getAccountNumber() {
+        return accountNumber;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+    
+    
+//    public Account getAccount() {
+//        return account;
+//    }
         
     public Address getAddress() {
         return address;
@@ -77,7 +96,10 @@ public class Customer implements Serializable{
         private String email;
         private Users user;
         private Address address;
-        private Account account;
+        //private Account account;
+        private String accountNumber;
+        private String status; 
+        private double balance;
         
         public Builder(String customerID) {
             this.customerID = customerID;
@@ -103,31 +125,49 @@ public class Customer implements Serializable{
             return this;
         }
         
+        public Builder accountNumber(String value){
+            this.accountNumber=value;
+            return this;
+        }
+        
+        public Builder status(String value){
+            this.status=value;
+            return this;
+        }
+        
+        public Builder balance(double value){
+            this.balance=value;
+            return this;
+        }
+        
         public Builder address(Address value){
             this.address=value;
             return this;
         }
         
-        public Builder account(Account value){
-            this.account=value;
-            return this;
-        }
+//        public Builder account(Account value){
+//            this.account=value;
+//            return this;
+//        }
         
-        public Builder copy(Customer value){
-            this.account=value.account;
+        public Builder copy(CustomerAccount value){
+            //this.account=value.account;
             this.address=value.address;
             this.customerID=value.customerID;
             this.id=value.id;
             this.phoneNumber=value.phoneNumber;
             this.user=value.user;
+            this.accountNumber=value.accountNumber;
+            this.status=value.status;
+            this.balance=value.balance;
             return this;
         }
 
 //        public Builder() {
 //        }
 
-        public Customer build(){
-            return new Customer(this);
+        public CustomerAccount build(){
+            return new CustomerAccount(this);
         }
     }
 
@@ -146,7 +186,7 @@ public class Customer implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Customer other = (Customer) obj;
+        final CustomerAccount other = (CustomerAccount) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -160,6 +200,9 @@ public class Customer implements Serializable{
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", user='" + user + '\'' +
+                ", email='" + accountNumber + '\'' +
+                ", user='" + status + '\'' +
+                ", user='" + balance + '\'' +
                 '}';
     }
 }

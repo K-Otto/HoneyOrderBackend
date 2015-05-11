@@ -6,27 +6,27 @@
 package za.ac.cput.project.universalhardwarestore.conf.factory;
 
 import java.util.Map;
-import za.ac.cput.project.universalhardwarestore.domain.Account;
 import za.ac.cput.project.universalhardwarestore.domain.Address;
-import za.ac.cput.project.universalhardwarestore.domain.Customer;
+import za.ac.cput.project.universalhardwarestore.domain.CustomerAccount;
 import za.ac.cput.project.universalhardwarestore.domain.Users;
 
 /**
  *
  * @author Garran
  */
-public class CustomerFactory {
-        public static Customer createCustomer(
+public class CustomerAccountFactory {
+        public static CustomerAccount createCustomer(
         Map<String,String> values,
                 Users users,
-                Account account,
                 Address address){
-            Customer customer = new Customer
+            CustomerAccount customer = new CustomerAccount
             .Builder(values.get("086487678"))
-            .account(account)
             .address(address)
             .phoneNumber(values.get("0111675436"))
             .email(values.get("garran@gmail.com"))
+            .accountNumber(values.get("53497334"))
+            .balance(1000)
+            .status(values.get("Active"))
             .build();
     return customer;
     }

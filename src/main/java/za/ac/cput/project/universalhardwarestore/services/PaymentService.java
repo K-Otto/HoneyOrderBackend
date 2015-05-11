@@ -6,12 +6,12 @@
 package za.ac.cput.project.universalhardwarestore.services;
 
 import java.util.List;
-import za.ac.cput.project.universalhardwarestore.domain.Account;
+import za.ac.cput.project.universalhardwarestore.domain.Payment;
 
 /**
  *
  * @author Garran
  */
-public interface AccountService {
-    List<Account> getAccount();
+public interface PaymentService {
+     List<Payment> getPayment();
 }

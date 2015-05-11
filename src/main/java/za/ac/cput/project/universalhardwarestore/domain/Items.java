@@ -8,26 +8,32 @@ package za.ac.cput.project.universalhardwarestore.domain;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Garran
  */
+@Embeddable
 public class Items implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String itemNumber;
     private int quantity; 
+//    @OneToOne
+//    @JoinColumn(name = "stock_id")
+    @Embedded
+    private Stock stock;
     @OneToMany
-    @JoinColumn(name = "dept_id")
-    private List<Stock> stock;
-    @OneToMany
-    @JoinColumn(name = "dept_id")
+    @JoinColumn(name = "shoppingCart_id")
     private List<ShoppingCart> shoppingCart;
     
     private Items() {
@@ -37,11 +43,15 @@ public class Items implements Serializable{
         return id;
     }
 
+    public String getItemNumber() {
+        return itemNumber;
+    }
+
     public int getQuantity() {
         return quantity;
     }
 
-    public List<Stock> getStock() {
+    public Stock getStock() {
         return stock;
     }
 
@@ -53,13 +63,21 @@ public class Items implements Serializable{
         this.quantity=builder.quantity;
         this.id=builder.id;
         this.shoppingCart=builder.shoppingCart;
+        this.itemNumber=builder.itemNumber;
+        this.stock=builder.stock;
     }
    
     public static class Builder{
         private Long id;
+        private String itemNumber;
         private int quantity;
         private List<ShoppingCart> shoppingCart;
-
+        private Stock stock;
+        
+        public Builder(String value){
+            this.itemNumber=itemNumber;
+        }
+        
         public Builder id(Long value){
             this.id=value;
             return this;
@@ -72,6 +90,11 @@ public class Items implements Serializable{
                 
         public Builder shoppingCart(List<ShoppingCart> value){
             this.shoppingCart=value;
+            return this;
+        }
+        
+        public Builder stock(Stock value){
+            this.stock=value;
             return this;
         }
         

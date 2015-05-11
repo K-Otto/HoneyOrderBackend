@@ -13,15 +13,14 @@ import za.ac.cput.project.universalhardwarestore.domain.Address;
  */
 public class AddressFactory {
     public static Address createAddress(String addressLine1,String addressLine2,String suburb,String city,String provence,String postalCode){
-    
-    Address address = new Address
-                .Builder(addressLine1)
-                .addressLine2(addressLine2)
-                .suburb(suburb)
-                .city(city)
-                .provence(provence)
-                .postalCode(postalCode)
-                .build();
+        Address address = new Address
+            .Builder(addressLine1)
+            .addressLine2(addressLine2)
+            .suburb(suburb)
+            .city(city)
+            .provence(provence)
+            .postalCode(postalCode)
+            .build();
         return address;
     }
 }

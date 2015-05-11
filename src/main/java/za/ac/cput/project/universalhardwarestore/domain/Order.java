@@ -7,6 +7,7 @@ package za.ac.cput.project.universalhardwarestore.domain;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
  *
  * @author Garran
  */
+@Embeddable
 public class Order implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -71,13 +73,17 @@ public class Order implements Serializable{
         private String shipStatus;
         private OrderStatus orderStatus;
 
-        public Builder id(Long value){
-            this.id=value;
-            return this;
+//        public Builder id(Long value){
+//            this.id=value;
+//            return this;
+//        }
+        
+        public Builder(String value){
+            this.orderCode=orderCode;
         }
         
-        public Builder orderCode(String value){
-            this.orderCode=value;
+        public Builder id(Long value){
+            this.id=value;
             return this;
         }
         

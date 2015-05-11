@@ -6,12 +6,12 @@
 package za.ac.cput.project.universalhardwarestore.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import za.ac.cput.project.universalhardwarestore.domain.Account;
+import za.ac.cput.project.universalhardwarestore.domain.Payment;
 
 /**
  *
  * @author Garran
  */
-public interface AccountRepository  extends CrudRepository<Account,Long>{
-    public Account findByCode(Long id);
+public interface PaymentRepository extends CrudRepository<Payment,Long>{
+    public Payment findByCode(String payment);
 }

@@ -10,27 +10,26 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import za.ac.cput.project.universalhardwarestore.conf.factory.AddressFactory;
-import za.ac.cput.project.universalhardwarestore.conf.factory.CustomerFactory;
+import za.ac.cput.project.universalhardwarestore.conf.factory.CustomerAccountFactory;
 import za.ac.cput.project.universalhardwarestore.conf.factory.UsersFactory;
 
 /**
  *
  * @author Garran
  */
-public class CustomerTest {
+public class CustomerAccountTest {
     
-            @Test
+    @Test
     public void testCreate() throws Exception {
         Users users = UsersFactory
                 .createUser("garran","1234","active");
         
-        Account account;
         Address address = AddressFactory
                 .createAddress("21 Vent Road","","Muizenberg","Cape Town","Western Cape","7945");
         
         Map<String,String> values = new HashMap<String,String>();
-        Customer customer = CustomerFactory
-                .createCustomer(values,users,account,address);
+        CustomerAccount customer = CustomerAccountFactory
+                .createCustomer(values,users,address);
         Assert.assertEquals("21 Vent Road",customer.getCustomerID());
     }
 

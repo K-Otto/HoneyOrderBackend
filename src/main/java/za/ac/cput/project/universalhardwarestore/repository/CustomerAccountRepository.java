@@ -6,12 +6,12 @@
 package za.ac.cput.project.universalhardwarestore.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import za.ac.cput.project.universalhardwarestore.domain.Customer;
+import za.ac.cput.project.universalhardwarestore.domain.CustomerAccount;
 
 /**
  *
  * @author Garran
  */
-public interface CustomerRepository  extends CrudRepository<Customer,Long>{
-    public Customer findByCode(String customerID);
+public interface CustomerAccountRepository  extends CrudRepository<CustomerAccount,Long>{
+    public CustomerAccount findByCode(String customerID);
 }

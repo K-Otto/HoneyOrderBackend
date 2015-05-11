@@ -5,21 +5,22 @@
  */
 package za.ac.cput.project.universalhardwarestore.conf.factory;
 
+import za.ac.cput.project.universalhardwarestore.domain.Order;
+import za.ac.cput.project.universalhardwarestore.domain.OrderStatus;
+
 /**
  *
  * @author Garran
  */
 public class OrderFactory {
-//            public static Items createItems(int quantity,
-//                        Map<String,String> values,
-//                        List<Stock> stock){
-//        Items Items = new Items
-//                .Builder(values.get("stockCode"))
-//                .stockName(values.get("stockName"))
-//                .stockDescription(values.get("stockDescription"))
-//                .quantity(Integer.parseInt(values.get("quantity")))
-//                .price(Double.parseDouble(values.get("price")))
-//                .suppliers(suppliers)
-//                .build();
-//        return Items;
+    public static Order createOrder(String orderCode,String dateOrdered,String shippedDate,String shipStatus,OrderStatus orderStatus){
+        Order order = new Order
+            .Builder(orderCode)
+            .dateOrdered(dateOrdered)
+            .shippedDate(shippedDate)
+            .shipStatus(shipStatus)
+            .orderStatus(orderStatus)
+            .build();
+        return order;
+    }
 }

@@ -13,13 +13,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import za.ac.cput.project.universalhardwarestore.domain.Customer;
+import za.ac.cput.project.universalhardwarestore.domain.CustomerAccount;
 
 /**
  *
  * @author Garran
  */
-public class TestCrudCustomer {
+public class TestCrudCustomerAccount {
     
 //    private Long id;
 //
@@ -28,7 +28,7 @@ public class TestCrudCustomer {
 //    @Test
 //    public void testCreate() throws Exception {
 //        List<Customer> customer = new ArrayList<Customer>();
-//        Customer customer = new Customer.Builder("311")
+//        CustomerAccount customer = new CustomerAccount.Builder("311")
 //                .name("National Diploma IT").offering(2015).build();
 //        repository.save(customer);
 //        id=customer.getId();
@@ -37,15 +37,15 @@ public class TestCrudCustomer {
 //
 //    @Test
 //    public void testRead() throws Exception {
-//        Customer customer = repository.findOne(id);
+//        CustomerAccount customer = repository.findOne(id);
 //        Assert.assertEquals("National Diploma IT",customer.getName());
 //    }
 //
 //    @Test
 //    public void testUpdate() throws Exception {
 //
-//        Customer customer = repository.findOne(id);
-//        Customer newcustomer = new Customer.Builder("12").id(customer.getId())
+//        CustomerAccount customer = repository.findOne(id);
+//        CustomerAccount newcustomer = new CustomerAccount.Builder("12").id(customer.getId())
 //                .name("Diploma IT").offering(2014).build();
 //        repository.save(newcustomer);
 //        Assert.assertEquals("Diploma IT", customer.getName());
@@ -55,9 +55,9 @@ public class TestCrudCustomer {
 //
 //    @Test
 //    public void testDelete() throws Exception {
-//        Customer customer = repository.findOne(id);
+//        CustomerAccount customer = repository.findOne(id);
 //        repository.delete(customer);
-//        Customer newcustomer = repository.findOne(id);
+//        CustomerAccount newcustomer = repository.findOne(id);
 //        Assert.assertNull(newcustomer);
 //
 //

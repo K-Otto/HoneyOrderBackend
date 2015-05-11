@@ -6,12 +6,12 @@
 package za.ac.cput.project.universalhardwarestore.services;
 
 import java.util.List;
-import za.ac.cput.project.universalhardwarestore.domain.Customer;
+import za.ac.cput.project.universalhardwarestore.domain.CustomerAccount;
 
 /**
  *
  * @author Garran
  */
-public interface CustomerService {
-    List<Customer> getCustomer();
+public interface CustomerAccountService {
+    List<CustomerAccount> getCustomerAccount();
 }

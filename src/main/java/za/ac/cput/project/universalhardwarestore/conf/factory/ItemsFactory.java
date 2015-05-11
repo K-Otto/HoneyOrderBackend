@@ -16,17 +16,15 @@ import za.ac.cput.project.universalhardwarestore.domain.Stock;
  * @author Garran
  */
 public class ItemsFactory {
-//        public static Items createItems(int quantity,
-//                        Map<String,String> values,
-//                        List<Items> items){
-//        Items items = new Items
-//                .Builder(values.get("stockCode"))
-//                .stockName(values.get("stockName"))
-//                .stockDescription(values.get("stockDescription"))
-//                .quantity(Integer.parseInt(values.get("quantity")))
-//                .price(Double.parseDouble(values.get("price")))
-//                .suppliers(suppliers)
-//                .build();
-//        return items;
-//    }
+        public static Items createItems(
+                        Map<String,String> values,
+                        List<ShoppingCart> shoppingCart,
+                        Stock stock){
+        Items items = new Items
+                .Builder(values.get("1342"))
+                .quantity(23)
+                .stock(stock)
+                .build();
+        return items;
+    }
 }

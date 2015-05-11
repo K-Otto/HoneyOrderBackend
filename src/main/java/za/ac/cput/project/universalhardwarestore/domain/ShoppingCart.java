@@ -17,9 +17,10 @@ public class ShoppingCart implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="shoppingCart_id")
-    private List<Account> account;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name="customeraccount_id")
+    @Embedded
+    CustomerAccount customerAccount;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="shoppingCart_id")
     private List<Items> items;
@@ -30,7 +31,7 @@ public class ShoppingCart implements Serializable{
 
     public ShoppingCart(Builder builder) {
         id=builder.id;
-        account=builder.account;
+        customerAccount=builder.customerAccount;
         items=builder.items;
         dateCreated=builder.dateCreated;
     }
@@ -39,8 +40,8 @@ public class ShoppingCart implements Serializable{
         return id;
     }
 
-    public List<Account> getAccount() {
-        return account;
+    public CustomerAccount getCustomerAccount() {
+        return customerAccount;
     }
 
     public List<Items> getItems() {
@@ -53,7 +54,7 @@ public class ShoppingCart implements Serializable{
     
     public static class Builder{
     private Long id;
-    private List<Account> account;
+    private CustomerAccount customerAccount;
     private List<Items> items;
     private String dateCreated;
 
@@ -61,8 +62,8 @@ public class ShoppingCart implements Serializable{
             this.dateCreated = dateCreated;
         }
         
-        public Builder account(List<Account> value){
-            this.account=value;
+        public Builder customerAccount(CustomerAccount value){
+            this.customerAccount=value;
             return this;
         }
         
@@ -78,35 +79,34 @@ public class ShoppingCart implements Serializable{
         
         public Builder copy(ShoppingCart value){
             this.id=value.getId();
-            this.account=value.getAccount();
+            this.customerAccount=value.getCustomerAccount();
             this.items=value.getItems();
             this.dateCreated=value.getDateCreated();
             return this;
         }
         
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ShoppingCart)) return false;
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof ShoppingCart)) return false;
 
-        ShoppingCart shoppingCart = (ShoppingCart) o;
+            ShoppingCart shoppingCart = (ShoppingCart) o;
 
-        return !(id != null ? !id.equals(shoppingCart.id) : shoppingCart.id != null);
+            return !(id != null ? !id.equals(shoppingCart.id) : shoppingCart.id != null);
 
-    }
+        }
 
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
+        @Override
+        public int hashCode() {
+            return id != null ? id.hashCode() : 0;
+        }
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", date='" + dateCreated + '\'' +
-                '}';
-    }
-        
+        @Override
+        public String toString() {
+            return "Course{" +
+                    "id=" + id +
+                    ", date='" + dateCreated + '\'' +
+                    '}';
+        }
     }
 }
