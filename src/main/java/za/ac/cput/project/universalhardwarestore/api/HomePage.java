@@ -6,13 +6,14 @@
 package za.ac.cput.project.universalhardwarestore.api;
 
 import java.util.List;
-import za.ac.cput.project.universalhardwarestore.domain.Stock;
-import za.ac.cput.project.universalhardwarestore.services.Impl.StockServiceImpl;
+//import za.ac.cput.project.universalhardwarestore.domain.Stock;
+//import za.ac.cput.project.universalhardwarestore.services.Impl.StockServiceImpl;
 import za.ac.cput.project.universalhardwarestore.domain.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import za.ac.cput.project.universalhardwarestore.services.Impl.UsersServiceImpl;
 /**
  *
  * @author Garran
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/**")
 public class HomePage {
     @Autowired
-    private StockServiceImpl service;
+    private UsersServiceImpl service;
     @RequestMapping(value = "home",method = RequestMethod.GET)
     public String Index(){
         return "This is a Home Page";
@@ -45,8 +46,8 @@ public class HomePage {
     
     
     
-    @RequestMapping(value = "/stocks", method = RequestMethod.GET)
-    public List<Stock> getStocks(){
-        return service.getStock();
-    }
+//    @RequestMapping(value = "/stocks", method = RequestMethod.GET)
+//    public List<Stock> getStocks(){
+//        return service.getStock();
+//    }
 }
