@@ -21,8 +21,6 @@ public class CustomerAccountTest {
     
     @Test
     public void testCreate() throws Exception {
-        //Users users = UsersFactory
-                //.createUser("garran","1234","active");
         
         Address address = AddressFactory
                 .createAddress("21 Vent Road","","Muizenberg","Cape Town","Western Cape","7945");

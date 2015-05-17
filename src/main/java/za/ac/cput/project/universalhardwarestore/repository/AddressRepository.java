@@ -13,5 +13,5 @@ import za.ac.cput.project.universalhardwarestore.domain.Address;
  * @author Garran
  */
 //public interface AddressRepository extends CrudRepository<Address,Long>{
-//    public Address findByAddressLine1(String addressLine1);
+//    //public Address findByAddressLine1(String addressLine1);
 //}
