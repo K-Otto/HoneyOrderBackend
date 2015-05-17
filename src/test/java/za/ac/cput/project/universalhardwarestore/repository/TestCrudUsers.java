@@ -29,21 +29,21 @@ public class TestCrudUsers extends AbstractTestNGSpringContextTests{
     
     @Test
     public void create() throws Exception {
-        Users user = UsersFactory
-                .createUser("garran","1234","active");
+        Users users = UsersFactory
+                .createUsers("garran","1234","active");
 
-        repository.save(user);
-        id=user.getId();
-        Assert.assertNotNull(user.getId());
+        repository.save(users);
+        id=users.getId();
+        Assert.assertNotNull(users.getId());
     }
     
-    @Test(dependsOnMethods = "create",enabled = false)
+    @Test(dependsOnMethods = "create")
     public void read() throws Exception {
         Users user = repository.findOne(id);
         Assert.assertNotNull(user);
     }
 
-    @Test(dependsOnMethods = "read",enabled = false)
+    @Test(dependsOnMethods = "read")
     public void update() throws Exception {
         Users user = repository.findOne(id);
 
@@ -60,7 +60,7 @@ public class TestCrudUsers extends AbstractTestNGSpringContextTests{
         Assert.assertEquals(updatedUser.getUserName(),"garran");
     }
 
-    @Test(dependsOnMethods = "update",enabled = false)
+    @Test(dependsOnMethods = "update")
     public void delete() throws Exception {
         Users user = repository.findOne(id);
         repository.delete(user);

@@ -23,21 +23,21 @@ public class UsersTest {
     @Test
     public void testCreate() throws Exception {
         Users users = UsersFactory
-                .createUser("garran","1234","active");
+                .createUsers("garran","1234","active");
         Assert.assertEquals("garran",users.getUserName());
     }
 
     @Test
     public void testUpdate() throws Exception {
         Users users = UsersFactory
-                .createUser("garran","1234","active");
+                .createUsers("garran","1234","active");
 
-        Users copiedUser = new Users
+        Users copiedUsers = new Users
                 .Builder("garran").copy(users).password("1234").status("active").build();
         Assert.assertEquals("garran",users.getUserName());
-        Assert.assertEquals("garran",copiedUser.getUserName());
+        Assert.assertEquals("garran",copiedUsers.getUserName());
         Assert.assertEquals("1234",users.getPassword());
-        Assert.assertEquals("1234",copiedUser.getPassword());
+        Assert.assertEquals("1234",copiedUsers.getPassword());
 
     }
 }

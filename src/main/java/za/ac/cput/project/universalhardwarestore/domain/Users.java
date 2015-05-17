@@ -6,7 +6,7 @@
 package za.ac.cput.project.universalhardwarestore.domain;
 
 import java.io.Serializable;
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -96,9 +96,9 @@ public class Users implements Serializable{
         if (this == o) return true;
         if (!(o instanceof Users)) return false;
 
-        Users user = (Users) o;
+        Users users = (Users) o;
 
-        return !(id != null ? !id.equals(user.id) : user.id != null);
+        return !(id != null ? !id.equals(users.id) : users.id != null);
 
     }
 

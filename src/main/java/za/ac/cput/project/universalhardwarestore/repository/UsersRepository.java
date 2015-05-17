@@ -13,5 +13,5 @@ import za.ac.cput.project.universalhardwarestore.domain.Users;
  * @author Garran
  */
 public interface UsersRepository extends CrudRepository<Users,Long>{
-    public Users findByName(String userName);
+    public Users findByUserName(String userName);
 }

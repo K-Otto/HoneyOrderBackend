@@ -12,14 +12,13 @@ import za.ac.cput.project.universalhardwarestore.domain.Users;
  * @author Garran
  */
 public class UsersFactory {
-    public static Users createUser(String userName,String password,String status){
+    public static Users createUsers(String userName,String password,String status){
     
-    Users user = new Users
+    Users users = new Users
                 .Builder(userName)
-                //.id(id)
                 .password(password)
                 .status(status)
                 .build();
-        return user;
+        return users;
     }
 }
