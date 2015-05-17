@@ -1,92 +1,63 @@
-///*
-// * To change this license header, choose License Headers in Project Properties.
-// * To change this template file, choose Tools | Templates
-// * and open the template in the editor.
-// */
-//package za.ac.cput.project.universalhardwarestore.domain;
-//
-//import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
-//import org.junit.After;
-//import org.junit.AfterClass;
-//import org.junit.Assert;
-//import org.junit.Before;
-//import org.junit.BeforeClass;
-//import org.junit.Test;
-//import static org.junit.Assert.*;
-//import za.ac.cput.project.universalhardwarestore.conf.factory.StockFactory;
-//
-///**
-// *
-// * @author Garran
-// */
-//public class StockTest {
-//    
-//    public StockTest() {
-//    }
-//    
-//    @BeforeClass
-//    public static void setUpClass() {
-//    }
-//    
-//    @Test
-//    public void testCreateStock() throws Exception {
-//        List<Suppliers> suppliers = new ArrayList<Suppliers>();
-//        Map<String,String> values = new HashMap<String,String>();
-//
-//        values.put("stockCode","4545");
-//        values.put("stockName", "Bolts");
-//        values.put("stockDescription", "Silver");
-//        values.put("quantity", "12");
-//        values.put("price", "15");
-//        
-//        Stock stock = StockFactory.createStock(25, values, suppliers);
-//        
-//        Assert.assertEquals("Bolts",stock.getStockName());
-//    }
-//    
-//    public void testUpadteCourse() throws Exception {
-//        List<Suppliers> suppliers = new ArrayList<Suppliers>();
-//        Map<String,String> values = new HashMap<String,String>();
-//
-//        values.put("stockCode","4545");
-//        values.put("stockName", "Bolts");
-//        values.put("stockDescription", "Silver");
-//        values.put("quantity", "12");
-//        values.put("price", "15");
-//
-//        Stock stock = StockFactory
-//                .createStock(25, values, suppliers);
-//
-//        Stock newstock = new Stock
-//                .Builder(stock.getStockCode())
-//                .copy(stock)
-//                .stockName("Bolts").build();
-//
-//        Assert.assertEquals("4545",newstock.getStockCode());
-//        Assert.assertEquals("Bolts",newstock.getStockName());
-//        Assert.assertEquals(20,newstock.getQuantity());
-//        Assert.assertEquals(25,stock.getQuantity());
-//    }
-//    
-//    
-//    @AfterClass
-//    public static void tearDownClass() {
-//    }
-//    
-//    @Before
-//    public void setUp() {
-//    }
-//    
-//    @After
-//    public void tearDown() {
-//    }
-//
-//    // TODO add test methods here.
-//    // The methods must be annotated with annotation @Test. For example:
-//    //
-//    // @Test
-//    // public void hello() {}
-//}
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package za.ac.cput.project.universalhardwarestore.domain;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+/**
+ *
+ * @author Garran
+ */
+public class StockTest{
+
+    public StockTest(){
+    }
+    
+    @Test
+    public void create() throws Exception {
+        Suppliers suppliers = new Suppliers.Builder("HardwareSupplier")
+            .address(null)
+            .supplierNumber("28743254368")
+            .supplierEmail("hardwaresupplier@hardware.com")
+            .build();
+        
+        Stock stock = new Stock.Builder("N38653")
+            .stockName("nails")
+            .stockDescription("long")
+            .quantity(1000)
+            .price(20)
+            .suppliers(suppliers)
+            .build();
+              
+        org.testng.Assert.assertEquals("nails",stock.getStockName());
+    }
+
+    @Test
+    public void testUpdate() throws Exception {
+        Suppliers suppliers = new Suppliers.Builder("HardwareSupplier")
+            .address(null)
+            .supplierNumber("28743254368")
+            .supplierEmail("hardwaresupplier@hardware.com")
+            .build();
+        
+        Stock stock = new Stock.Builder("N38653")
+            .stockName("nails")
+            .stockDescription("long")
+            .quantity(1000)
+            .price(20)
+            .suppliers(suppliers)
+            .build();
+
+        Stock copiedstock = new Stock
+                .Builder("N38653").copy(stock).stockName("nails").build();
+        
+
+        Assert.assertEquals("nails",stock.getStockName());
+        Assert.assertEquals("nails",copiedstock.getStockName());
+    }
+    
+}

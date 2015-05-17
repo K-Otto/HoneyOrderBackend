@@ -67,14 +67,14 @@ public class TestCrudCustomerAccount extends AbstractTestNGSpringContextTests{
         CustomerAccount customerAccount = repository.findOne(id);
         
         CustomerAccount newcustomerAccount = new CustomerAccount.Builder("086487678")
-            .phoneNumber("0111675437")
-            .email("garran2@gmail.com")
+            .phoneNumber("0111675436")
+            .email("garran@gmail.com")
             .balance(1080)
             .build();
         
         repository.save(newcustomerAccount);
-        Assert.assertEquals("garran2@gmail.com", customerAccount.getEmail());
-        Assert.assertEquals("0111675437", customerAccount.getPhoneNumber());
+        Assert.assertEquals("garran@gmail.com", customerAccount.getEmail());
+        Assert.assertEquals("0111675436", customerAccount.getPhoneNumber());
     }
 
     @org.testng.annotations.Test(dependsOnMethods = "update")
