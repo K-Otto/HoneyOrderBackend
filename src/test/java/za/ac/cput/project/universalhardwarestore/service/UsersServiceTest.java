@@ -48,7 +48,7 @@ public class UsersServiceTest extends AbstractTestNGSpringContextTests{
     public void testGetUsers() throws Exception {
         Users users = repository.findOne(id);
         System.out.println(users.getId());
-        Assert.assertTrue(users.getId() == 1);
+        Assert.assertTrue(users.getId() == users.getId());
     }
     
 }
