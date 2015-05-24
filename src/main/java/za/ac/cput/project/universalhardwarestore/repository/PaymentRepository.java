@@ -13,5 +13,5 @@ import za.ac.cput.project.universalhardwarestore.domain.Payment;
  * @author Garran
  */
 public interface PaymentRepository extends CrudRepository<Payment,Long>{
-    //public Payment findByCode(String payment);
+    public Payment findByPaidDate(String paidDate);
 }

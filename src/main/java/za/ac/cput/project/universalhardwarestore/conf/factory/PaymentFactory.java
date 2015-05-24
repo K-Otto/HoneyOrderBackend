@@ -15,12 +15,9 @@ import za.ac.cput.project.universalhardwarestore.domain.Payment;
  * @author Garran
  */
 public class PaymentFactory {
-    public static Payment createPayment(double total,
-                        Map<String,String> values,
-                        CustomerAccount customerAccount,
-                        Order order){
+    public static Payment createPayment(double total, String paidDate, CustomerAccount customerAccount, Order order){
         Payment payment = new Payment
-                .Builder(values.get("paidDate"))
+                .Builder(paidDate)
                 .total(total)
                 .customerAccount(customerAccount)
                 .order(order)

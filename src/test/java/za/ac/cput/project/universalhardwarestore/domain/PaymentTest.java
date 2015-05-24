@@ -42,13 +42,9 @@ public class PaymentTest {
 
         Order order = OrderFactory
                 .createOrder(valuesOrder,null, null);
-        
-        Map<String,String> values = new HashMap<String,String>();
-        
-        values.put("paidDate","14MAR2015");
 
         Payment payment = PaymentFactory
-                .createPayment(200.0, values, customer, order);
+                .createPayment(200.0, "14MAR2015", customer, order);
 
         Assert.assertEquals(200.0,payment.getTotal());
     }
@@ -76,16 +72,12 @@ public class PaymentTest {
 
         Order order = OrderFactory
                 .createOrder(valuesOrder,null, null);
-        
-        Map<String,String> values = new HashMap<String,String>();
-        
-        values.put("paidDate","14MAR2015");
 
         Payment payment = PaymentFactory
-                .createPayment(200.0, values, customer, order);
+                .createPayment(200.0, "14MAR2015", customer, order);
         
         Payment copiedpayment = PaymentFactory
-                .createPayment(220.0, values, customer, order);
+                .createPayment(220.0, "14MAR2015", customer, order);
 
         Assert.assertEquals(200.0,payment.getTotal());
         Assert.assertEquals(220.0,copiedpayment.getTotal());

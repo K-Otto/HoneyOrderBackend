@@ -6,11 +6,8 @@
 package za.ac.cput.project.universalhardwarestore.domain;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -73,13 +70,8 @@ public class Payment implements Serializable{
     private double total; 
     private CustomerAccount customerAccount;
     private Order order;
-        
-//        public Builder itemNumber(String value){
-//            this.itemNumber=value;
-//            return this;
-//        }
-        
-        public Builder(String value){
+
+        public Builder(String paidDate){
             this.paidDate=paidDate;
         }
     
@@ -87,11 +79,6 @@ public class Payment implements Serializable{
             this.id=value;
             return this;
         }
-        
-//        public Builder paidDate(String value){
-//            this.paidDate=value;
-//            return this;
-//        }
                 
         public Builder total(double value){
             this.total=value;

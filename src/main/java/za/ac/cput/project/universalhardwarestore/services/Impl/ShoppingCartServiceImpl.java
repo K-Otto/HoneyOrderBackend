@@ -8,6 +8,7 @@ package za.ac.cput.project.universalhardwarestore.services.Impl;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.project.universalhardwarestore.domain.ShoppingCart;
 import za.ac.cput.project.universalhardwarestore.repository.ShoppingCartRepository;
 import za.ac.cput.project.universalhardwarestore.services.ShoppingCartService;
@@ -16,6 +17,7 @@ import za.ac.cput.project.universalhardwarestore.services.ShoppingCartService;
  *
  * @author Garran
  */
+@Service
 public class ShoppingCartServiceImpl implements ShoppingCartService{
     @Autowired
     ShoppingCartRepository repository;

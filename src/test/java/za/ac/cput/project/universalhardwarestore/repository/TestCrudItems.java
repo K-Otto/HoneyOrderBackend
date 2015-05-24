@@ -82,7 +82,5 @@ public class TestCrudItems extends AbstractTestNGSpringContextTests{
         repository.delete(items);
         Items newitems = repository.findOne(id);
         Assert.assertNull(newitems);
-
-
     }
 }

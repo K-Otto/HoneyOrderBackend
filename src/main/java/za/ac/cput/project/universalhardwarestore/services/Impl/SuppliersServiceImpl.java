@@ -8,6 +8,7 @@ package za.ac.cput.project.universalhardwarestore.services.Impl;
 import java.util.List;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.project.universalhardwarestore.domain.Suppliers;
 import za.ac.cput.project.universalhardwarestore.repository.SuppliersRepository;
 import za.ac.cput.project.universalhardwarestore.services.SuppliersService;
@@ -16,6 +17,7 @@ import za.ac.cput.project.universalhardwarestore.services.SuppliersService;
  *
  * @author Garran
  */
+@Service
 public class SuppliersServiceImpl implements SuppliersService{
     @Autowired
     SuppliersRepository repository;

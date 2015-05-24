@@ -60,7 +60,7 @@ public class TestCrudUsers extends AbstractTestNGSpringContextTests{
         Assert.assertEquals(updatedUser.getUserName(),"garran");
     }
 
-    @Test(dependsOnMethods = "update")
+    @Test(dependsOnMethods = "update", enabled = false)
     public void delete() throws Exception {
         Users user = repository.findOne(id);
         repository.delete(user);

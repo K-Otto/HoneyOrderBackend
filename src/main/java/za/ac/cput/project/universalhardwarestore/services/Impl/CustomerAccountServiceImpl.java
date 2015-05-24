@@ -8,6 +8,7 @@ package za.ac.cput.project.universalhardwarestore.services.Impl;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.project.universalhardwarestore.domain.CustomerAccount;
 import za.ac.cput.project.universalhardwarestore.repository.CustomerAccountRepository;
 import za.ac.cput.project.universalhardwarestore.services.CustomerAccountService;
@@ -16,6 +17,7 @@ import za.ac.cput.project.universalhardwarestore.services.CustomerAccountService
  *
  * @author Garran
  */
+@Service
 public class CustomerAccountServiceImpl implements CustomerAccountService{
     @Autowired
     CustomerAccountRepository repository;

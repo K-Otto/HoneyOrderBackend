@@ -8,6 +8,7 @@ package za.ac.cput.project.universalhardwarestore.services.Impl;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.project.universalhardwarestore.domain.Order;
 import za.ac.cput.project.universalhardwarestore.repository.OrderRepository;
 import za.ac.cput.project.universalhardwarestore.services.OrderService;
@@ -16,6 +17,7 @@ import za.ac.cput.project.universalhardwarestore.services.OrderService;
  *
  * @author Garran
  */
+@Service
 public class OrderServiceImpl implements OrderService{
     @Autowired
     OrderRepository repository;
