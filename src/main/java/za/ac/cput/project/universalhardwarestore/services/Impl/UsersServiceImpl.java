@@ -30,4 +30,9 @@ public class UsersServiceImpl implements UsersService{
         }
         return allusers;
     }
+
+    @Override
+    public Long getUser(Long id) {
+        return repository.findOne(id).getId();
+    }
 }

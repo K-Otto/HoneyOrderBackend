@@ -15,4 +15,5 @@ import za.ac.cput.project.universalhardwarestore.domain.Users;
  */
 public interface UsersService {
     List<Users> getUsers();
+    Long getUser(Long id);
 }
