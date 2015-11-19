@@ -17,4 +17,4 @@ The system will have a complete process being automated. Starting from beginning
 
 ## Domain Model
 
-![UML](https://github.com/Garran/UniversalHardwareStore/blob/master/UniversalHardwareStore_UML2.jpg)
+![UML](https://github.com/Ancel/UniversalHardwareStore/blob/master/UniversalHardwareStore_UML2.jpg)
