@@ -6,6 +6,7 @@
 package za.ac.cput.project.services;
 
 import za.ac.cput.project.hospitalmanagement.domain.User;
+import java.util.List;
 
 /**
  *
@@ -15,4 +16,8 @@ public interface UserServices {
     String saveUser(String username, String password, String firstName, String lastName);  
     User getUserById(Long id);
     User getUserByUsername(String username);
+    List <User> getAll();
+    void deleteUser(Long id);
+    String updateUser(String username, String password, String firstName, String lastName, Long id
+            );
 }

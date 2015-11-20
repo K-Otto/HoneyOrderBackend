@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import za.ac.cput.project.hospitalmanagement.domain.User;
 import za.ac.cput.project.services.UserServices;
+import java.util.List;
 /**
  *
  * @author Ancel
@@ -43,5 +44,32 @@ public class UserApi {
     public User getUserByUsername(HttpServletRequest request) {
         String username = request.getParameter("username");
         return service.getUserByUsername(username);
+    }
+    
+    @RequestMapping(value="/getAllUserDetails", method= RequestMethod.GET)
+    public List<User> getAll(HttpServletRequest request) {
+        return service.getAll();
+    }
+    
+    @RequestMapping(value="/deleteUser", method= RequestMethod.GET)
+    public String deleteEmployee(HttpServletRequest request) {
+        String userId = request.getParameter("userId");
+        Long id = Long.parseLong(userId);
+        service.deleteUser(id);
+        return "User record deleted";
+    }
+    
+    @RequestMapping(value = "/updateUser", method = RequestMethod.GET)
+    public String updateUser(HttpServletRequest request){
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            
+            String userId = request.getParameter("userId");
+            Long id = Long.parseLong(userId);
+            
+
+        return service.updateUser(username, password, firstName, lastName, id);
     }
 }
