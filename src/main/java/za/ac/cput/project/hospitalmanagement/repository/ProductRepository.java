@@ -12,5 +12,6 @@ import za.ac.cput.project.hospitalmanagement.domain.Product;
  */
 public interface ProductRepository extends CrudRepository <Product, Long>{
     public Product findByProductId(long productId);
+    public Product findByProductName(String productName);
 
 }
