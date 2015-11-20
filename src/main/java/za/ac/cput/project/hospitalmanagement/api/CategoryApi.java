@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package za.ac.cput.project.hospitalmanagement.api;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import za.ac.cput.project.hospitalmanagement.domain.Category;
 import za.ac.cput.project.hospitalmanagement.domain.Employee;
+import za.ac.cput.project.hospitalmanagement.domain.User;
 import za.ac.cput.project.services.CategoryServices;
 /**
  *
@@ -43,5 +45,26 @@ public class CategoryApi {
         Long id = Long.parseLong(categoryId);
         service.deleteCategory(id);
         return "Category record deleted";
+    }
+    
+    @RequestMapping(value="/getCategoryByCategoryTitle", method= RequestMethod.GET)
+    public Category getUserByUsername(HttpServletRequest request) {
+        String categoryTitle = request.getParameter("categoryTitle");
+        return service.getCategoryByCategoryTitle(categoryTitle);
+    }
+    
+    @RequestMapping(value="/getAllCategoryDetails", method= RequestMethod.GET)
+    public List<Category> getAll(HttpServletRequest request) {
+        return service.getAll();
+    }
+    
+    @RequestMapping(value = "/updateCategory", method = RequestMethod.GET)
+    public String updateUser(HttpServletRequest request){
+        String title = request.getParameter("categoryTitle");            
+            String categoryId = request.getParameter("categoryId");
+            Long id = Long.parseLong(categoryId);
+            
+
+        return service.updateCategory(title, id);
     }
 }

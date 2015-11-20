@@ -5,7 +5,9 @@
  */
 package za.ac.cput.project.services;
 
+import java.util.List;
 import za.ac.cput.project.hospitalmanagement.domain.Category;
+import za.ac.cput.project.hospitalmanagement.domain.User;
 
 /**
  *
@@ -15,4 +17,7 @@ public interface CategoryServices {
     String saveCategory(String categoryTitle);
     Category getCategory(Long id);
     void deleteCategory(Long id);
+    Category getCategoryByCategoryTitle(String categoryTitle);
+    List <Category> getAll();
+    String updateCategory(String title, Long id);
 }

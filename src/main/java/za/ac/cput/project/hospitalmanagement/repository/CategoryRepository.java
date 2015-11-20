@@ -12,5 +12,5 @@ import za.ac.cput.project.hospitalmanagement.domain.Category;
  */
 public interface CategoryRepository extends CrudRepository <Category, Long>{
     public Category findByCategoryId(long categoryId);
-
+    public Category findByCategoryTitle(String categoryTitle);
 }
