@@ -12,5 +12,6 @@ import za.ac.cput.project.hospitalmanagement.domain.Invoice;
  */
 public interface InvoiceRepository extends CrudRepository <Invoice, Long>{
     public Invoice findByInvoiceId(long invoiceId);
+    public Invoice findByInvoiceDate(String invoiceDate);
 
 }

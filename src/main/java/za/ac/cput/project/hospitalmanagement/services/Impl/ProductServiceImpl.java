@@ -11,6 +11,7 @@ import za.ac.cput.project.hospitalmanagement.conf.factory.CategoryFactory;
 import za.ac.cput.project.hospitalmanagement.conf.factory.ProductFactory;
 import za.ac.cput.project.hospitalmanagement.domain.Category;
 import za.ac.cput.project.hospitalmanagement.domain.Product;
+import za.ac.cput.project.hospitalmanagement.repository.CategoryRepository;
 import za.ac.cput.project.hospitalmanagement.repository.ProductRepository;
 import za.ac.cput.project.services.ProductServices;
 /**
@@ -22,11 +23,14 @@ public class ProductServiceImpl implements ProductServices{
     @Autowired
     ProductRepository repository;
     
+    @Autowired
+    CategoryRepository categoryRepository;
+    
     @Override
     public String saveProduct(String categoryTitle, String productName, String productDescription, double price)
     {
-         Category category = CategoryFactory
-                .createCategory(categoryTitle);
+        Category category = categoryRepository.findByCategoryTitle(categoryTitle);
+        
         Product product = ProductFactory
                 .createProduct(productName, productDescription, price, category);
         return repository.save(product).toString();
